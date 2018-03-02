@@ -1,0 +1,65 @@
+.body{
+    /*width: 100%;*/
+    /*background-color: #fff;*/
+    margin-top:10px;
+    padding:10px;
+    padding-top: 0;
+}
+.screen_box{
+    width: 100%;
+    padding:20px 20px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    font-size: 13px;
+    color: #688696;
+}
+.screen_department{
+    padding: 5px 10px;
+    border: 1px solid #e0e0e0;
+    width: 100px;
+}
+.screen_department option{
+    margin: 5px 10px;
+    /*border: 1px solid #e0e0e0;*/
+}
+
+.screen_box .title{
+    font-size: 16px;
+    
+    margin-top: 20px; 
+}
+
+.screen_box ul{
+    overflow: hidden;
+}
+
+.screen_box ul li{
+    float: left;
+    padding: 20px 20px;
+    border: 1px solid #e0e0e0;
+    /*width: 23%;*/
+    width: 338px;
+}
+.screen_box ul li+li{
+    margin-left: 20px;
+}
+.screen_box ul li div{
+    display: inline-block;
+    text-align: center;
+    width: 52px;
+    margin-top: 10px;
+}
+
+.screen_box ul li div+div{
+    margin-left:5px;
+}
+
+
+.screen_box ul li div:nth-of-type(5n+1){
+    margin-left:0px; 
+}
+
+img{
+    width: 32px;
+    height: 32px;
+}

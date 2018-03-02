@@ -1,0 +1,60 @@
+.body{
+			padding: 20px;
+			padding-top: 20px;
+			overflow: hidden;
+			/*margin-left: 10px;*/
+			background-color: #fff;
+			/*margin-right: 10px;*/
+			font-size: 13px;
+		}
+		.head{
+			width: 60px;
+			height:60px;
+			margin-right:20px;
+			margin-left:10px;
+			float: left;
+		}
+		img{
+			margin-right:10px;
+		}
+		p{
+			margin:0;
+		}
+		.title{
+			color: #363636;
+			font-size: 13px;
+			margin-top:20px;
+		}
+		.content{
+			font-size: 13px;
+			margin-top:10px;
+		}
+
+		.preserve,
+		.cancel{
+			margin-top:40px;
+			/*width: 	70px;*/
+			/*height:30px;*/
+			border-radius: 4px;
+			color: #fff;
+			font-size: 13px;
+			line-height: 30px;
+			text-align: center;
+			cursor:pointer;
+			float:left;
+		}
+		.cancel{
+			margin-left: 20px;
+		}
+		.clear{
+			clear: both;
+		}
+		.icon_p{
+			display: inline-block;	
+		}
+
+		.icon{
+			margin-top: -1px;
+			width: 20px;
+			height: 20px;
+		}

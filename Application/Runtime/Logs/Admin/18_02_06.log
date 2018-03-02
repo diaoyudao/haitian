@@ -1,0 +1,469 @@
+[ 2018-02-06T18:12:05+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:05+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: PC client
+[ 2018-02-06T18:12:05+08:00 ] 172.16.30.35 /service/home/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000261s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000408s ]
+INFO: [ action_begin ] --START--
+
+[ 2018-02-06T18:12:07+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:07+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: PC client
+[ 2018-02-06T18:12:07+08:00 ] 172.16.30.35 /service/login/employee/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000256s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000284s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000597s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000638s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000066s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003206s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003239s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000086s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000100s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000277s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000294s ]
+
+[ 2018-02-06T18:12:08+08:00 ] 172.16.30.35 /service/verify/login/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:08+08:00 ] 172.16.30.35 /service/verify/login/index
+ERR: PC client
+[ 2018-02-06T18:12:08+08:00 ] 172.16.30.35 /service/verify/login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000230s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000280s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000307s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.003532s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.003574s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000417s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000471s ]
+
+[ 2018-02-06T18:12:16+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:16+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: PC client
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: system-exception
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: system-exception: 102行，/sdc1/www/haitian.cms/ThinkPHP/Common/functions.php, SQLSTATE[28000] [1045] Access denied for user 'mysqluser'@'172.16.30.125' (using password: YES), #0 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Db/Driver.class.php(109): E('SQLSTATE[28000]...')
+#1 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Db/Driver.class.php(1075): Think\Db\Driver->connect()
+#2 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php(47): Think\Db\Driver->initConnect(true)
+#3 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Model.class.php(134): Think\Db\Driver\Mysql->getFields('employee')
+#4 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Model.class.php(122): Think\Model->flush()
+#5 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Model.class.php(1454): Think\Model->_checkTableInfo()
+#6 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Model.class.php(97): Think\Model->db(0, '', true)
+#7 /sdc1/www/haitian.cms/ThinkPHP/Common/functions.php(621): Think\Model->__construct('employee', '', '')
+#8 /sdc1/www/haitian.cms/Application/Admin/Controller/Login/EmployeeController.class.php(53): M('employee')
+#9 /sdc1/www/haitian.cms/Application/Admin/Controller/Login/EmployeeController.class.php(21): Admin\Controller\Login\EmployeeController->loginSumbit()
+#10 [internal function]: Admin\Controller\Login\EmployeeController->login()
+#11 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/App.class.php(173): ReflectionMethod->invoke(Object(Admin\Controller\Login\EmployeeController))
+#12 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/App.class.php(110): Think\App::invokeAction(Object(Admin\Controller\Login\EmployeeController), 'login')
+#13 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/App.class.php(204): Think\App::exec()
+#14 /sdc1/www/haitian.cms/ThinkPHP/Library/Think/Think.class.php(120): Think\App::run()
+#15 /sdc1/www/haitian.cms/ThinkPHP/ThinkPHP.php(97): Think\Think::start()
+#16 /sdc1/www/haitian.cms/1fd3ab97ee.php(38): require('/sdc1/www/haiti...')
+#17 {main}
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000195s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003721s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003769s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000865s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000908s ]
+
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: PC client
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/login/employee/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003792s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000267s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000728s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000762s ]
+
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.6716401184835263
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.6716401184835263
+ERR: PC client
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.6716401184835263
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000203s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004995s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005037s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000710s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000763s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000424s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000470s ]
+
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.8288820162229529
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.8288820162229529
+ERR: PC client
+[ 2018-02-06T18:12:21+08:00 ] 172.16.30.35 /service/verify/login/index?rand=0.8288820162229529
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000217s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007863s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.067359s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.067396s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000348s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000385s ]
+
+[ 2018-02-06T18:15:38+08:00 ] 172.16.30.35 /service/
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:38+08:00 ] 172.16.30.35 /service/
+ERR: PC client
+[ 2018-02-06T18:15:38+08:00 ] 172.16.30.35 /service/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000194s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000325s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000353s ]
+INFO: [ action_begin ] --START--
+
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: PC client
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/login/employee/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000171s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000776s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000805s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000473s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000498s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000059s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003141s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003161s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000071s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000284s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000315s ]
+
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/verify/login/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/verify/login/index
+ERR: PC client
+[ 2018-02-06T18:15:41+08:00 ] 172.16.30.35 /service/verify/login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000259s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000276s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000584s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000612s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000294s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000322s ]
+
+[ 2018-02-06T18:15:45+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:45+08:00 ] 172.16.30.35 /service/login/employee/login
+ERR: PC client
+[ 2018-02-06T18:15:45+08:00 ] 172.16.30.35 /service/login/employee/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000210s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000283s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000309s ]
+INFO: [ action_begin ] --START--
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.000427s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.000454s ]
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0006s ]
+SQL: SELECT aa.*,cc.name department_name,bb.name role_name,bb.role_type_code,cc.department_type_id FROM employee aa INNER JOIN role bb on aa.role_id =bb.role_id and bb.delete_time is null INNER JOIN department cc on aa.department_id =cc.department_id and cc.delete_time is null  WHERE aa.employee_code = 'root' AND aa.password = 'bbc6cae961297b95d4c3cb974419e866' AND aa.status = 1 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `department` [ RunTime:0.0005s ]
+SQL: SELECT `department_id` FROM `department` WHERE `department_type_id` = 'boss' AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `role` [ RunTime:0.0005s ]
+SQL: SELECT `role_id` FROM `role` WHERE `role_type_code` = 'boss' AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] A session had already been started - ignoring session_start() /sdc1/www/haitian.cms/Application/Admin/Common/Session.class.php 第 26 行.
+SQL: SELECT * FROM `role` WHERE `role_id` = 10012 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 157 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 157 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Admin/Common/Privilege.class.php 第 146 行.
+SQL: SELECT `login_time` FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+SQL: UPDATE `employee` SET `login_status`='1',`login_time`='2018-02-06 18:15:45',`login_quantity`='1' WHERE `employee_id` = 1000 [ RunTime:0.0444s ]
+
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+ERR: PC client
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+DEBUG: []
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+ERR: Index
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000224s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000242s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000273s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.008613s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.008657s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0005s ]
+SQL: SELECT `name`,`value` FROM `config` WHERE `status` = 1  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000128s ]
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 349 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php 第 379 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013720s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013748s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000112s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000129s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000391s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000416s ]
+
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: PC client
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+DEBUG: []
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: Home/index
+[ 2018-02-06T18:15:46+08:00 ] 172.16.30.35 /service/home/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000175s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000310s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000334s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.007756s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.007788s ]
+SQL: SHOW COLUMNS FROM `customer_liaison` [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer_liaison` WHERE ( `liaison_time` >= '2018-02-06' AND `liaison_time` < '2018-02-07'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0530s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer_liaison` WHERE ( `liaison_time` >= '2018-02-06' AND `liaison_time` < '2018-02-07'  ) AND ( delete_time is null ) AND `status` = 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE ( `login_time` >= '2018-02-06' AND `login_time` < '2018-02-07'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0012s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `task` WHERE ( `end_date` >= '2018-02-06'  ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `customer` [ RunTime:0.0007s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer` WHERE ( `create_time` < '2018-02-06' AND `create_time` >= '2018-02-05'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.1985s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer` WHERE ( `create_time` >= '2018-02' AND `create_time` < '2018-03-06'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0011s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project` WHERE ( `contract_date` < '2018-02-06' AND `contract_date` >= '2018-02-05'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project` WHERE ( `contract_date` >= '2018-02' AND `contract_date` < '2018-03-06'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0006s ]
+SQL: SELECT `name`,`value` FROM `config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: task /sdc1/www/haitian.cms/Application/Admin/Controller/Home/IndexController.class.php 第 158 行.
+SQL: SHOW COLUMNS FROM `notice` [ RunTime:0.0007s ]
+SQL: SELECT `notice_id`,`title` FROM `notice` WHERE ( delete_time is null ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000113s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006920s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006948s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000095s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000109s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000343s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000364s ]
+
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: PC client
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+DEBUG: {"month":"2018-02"}
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: Home/index
+[ 2018-02-06T18:15:47+08:00 ] 172.16.30.35 /service/home/index/monthlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000184s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000211s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000236s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.038328s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.038354s ]
+
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+ERR: PC client
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+DEBUG: []
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+ERR: Send/sms
+[ 2018-02-06T18:15:50+08:00 ] 172.16.30.35 /service/send/sms/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000178s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000209s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000229s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.006365s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.006389s ]
+SQL: SHOW COLUMNS FROM `province` [ RunTime:0.0004s ]
+SQL: SELECT * FROM province aa ORDER BY province_id  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0003s ]
+SQL: SELECT `value` FROM `config` WHERE `name` = 'sms_num' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sms_model` [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sms_model` ORDER BY sms_model_id  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000160s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000211s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007039s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007070s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003397s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003442s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000817s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000960s ]
+
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+ERR: PC client
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+DEBUG: []
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+ERR: Home/index
+[ 2018-02-06T18:15:51+08:00 ] 172.16.30.35 /service/home/index/loginRepeat
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000187s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000225s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000248s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.045872s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.045902s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+ERR: PC client
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+DEBUG: []
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+ERR: Send/model
+[ 2018-02-06T18:15:53+08:00 ] 172.16.30.35 /service/send/model/lists
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000653s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.006940s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.006966s ]
+SQL: SHOW COLUMNS FROM `sms_model` [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sms_model` ORDER BY sms_model_id  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000033s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000061s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003732s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003750s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000221s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000235s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000254s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000269s ]
+

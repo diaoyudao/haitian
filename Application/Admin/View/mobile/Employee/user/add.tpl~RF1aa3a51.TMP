@@ -1,0 +1,152 @@
+<extend name="./Application/Admin/View/mobile/base/context/common-new.tpl"/>
+
+<block name="common_css">
+
+</block>
+<block name="common_js">
+
+</block>
+
+<block name="head_left">
+<a onclick="removeIframe"><img  class="head_left" src="/public/img/home/xlcweb/u1489.png" alt="" /></a>
+</block>
+
+
+<block name="head_name">
+  我的
+</block>
+
+<block name="body_main">
+  <style>	
+    .bodycontent{
+     padding: 10px;
+     height: 100%;
+   }
+   .headpic{
+     width: 65px;
+     height: 65px;
+     border-radius: 50%;
+     border: 1px solid #E7E7E7;
+     text-align: center;
+     overflow: hidden;
+     background-color: #F2F2F2;
+     margin:20px auto;
+
+   }
+   .headpic img{
+    width: 100%;
+
+  }
+  .information{
+    width: 100%;
+  }
+  .information li{
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    color: #868686;
+    line-height: 40px;
+    padding-left: 10px;
+    border-bottom: 1px solid #E4E4E4;
+  }
+  .information li .left{
+    margin-right: 20%;
+
+  }
+  .information li .modify{
+    color: #4286F5;
+  }
+  .out{
+    position: absolute;
+    bottom: 20px;
+    width: 95%;
+    margin: auto;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background-color: #E4E4E4;
+    text-align: center;
+  }
+  .password{
+    padding: 10px 10px 10px 10px;
+  }
+  .password .list{
+    margin-top: 30px;
+  }
+  .password input{
+    width: 260px;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 20px;
+    border: 1px solid #E4E4E4;
+  }
+  .optic{
+    opacity: 0;
+  }
+  .none{
+    display: none;
+  }
+  .password .goback{
+    width:100px;
+    margin: auto;
+    margin-top: 20px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background-color: #E4E4E4;
+    text-align: center;
+  }
+</style>
+<div class="bodycontent">
+ <div class="headpic">
+  <img src="/public/img/home/xlcweb/u1465.png" alt="">
+</div>
+
+<!-- 基本信息 -->
+<ul class="information">
+  <li><span class="left">姓名</span><span class="right">{$Think.session.employee.name}</span></li>
+  <li><span class="left">部门</span><span class="right">{$Think.session.employee.department_name}</span></li>
+  <li><span class="left">账号</span><span class="right">{$Think.session.employee.phone}</span></li>
+  <li><span class="left">密码</span><span class="right modify" >修改</span></li>
+</ul>
+
+<!-- 退出登陆 -->
+<a href="/service/login/employee/login"><div class="out">退出</div></a>
+</div>
+
+<!-- 修改密码 -->
+<div class="password none">
+  <div class="list">
+   <span>旧密码<i class="optic">一</i></span>
+   <input type="password">
+ </div>
+ <div class="list">
+   <span>新密码<i class="optic">一</i></span>
+   <input type="password">
+ </div>
+ <div class="list">
+   <span>确认密码</span>
+   <input type="password">
+ </div>
+ <div class="goback">返回</div>
+</div>
+</block>
+
+<block name="footer_js">
+  <script>
+    function removeIframe() {
+      K.removeIframe();
+    }
+    $(function(){
+     $('.modify').click(function(){
+      $(".password").removeClass('none');
+      $('.bodycontent').addClass('none');
+    })
+     $('.goback').click(function(){
+      $(".bodycontent").removeClass('none');
+      $('.password').addClass('none');
+    })
+   })
+
+ </script>
+</block>

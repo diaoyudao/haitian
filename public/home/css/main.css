@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding:0;
+}
+
+body{
+	font-size:13px;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.clear{
+	clear: both;
+}
+
+.cancel{
+	margin-left: 20px;
+}
+
+p{
+                margin:0;
+                padding:0;
+            }
+

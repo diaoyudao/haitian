@@ -1,0 +1,100 @@
+.body{
+			padding: 20px;
+			padding-top: 0;
+			overflow: hidden;
+			/*margin-left: 10px;*/
+			background-color: #fff;
+			/*margin-right: 10px;*/
+		}
+		img{
+			width: 32px;
+			height:32px;
+			margin-right:10px;
+		}
+
+		.title{
+			color: #363636;
+			font-size: 13px;
+			margin-top:20px;
+		}
+		.content{
+			font-size: 13px;
+			margin-top:10px;
+		}
+
+		.preserve,
+		.cancel{
+			margin-top:20px;
+			/*width: 	70px;*/
+			/*height:30px;*/
+			border-radius: 4px;
+			color: #fff;
+			font-size: 13px;
+			line-height: 30px;
+			text-align: center;
+			cursor:pointer;
+			float:left;
+		}
+		.cancel{
+			margin-left: 20px;
+		}
+		.clear{
+			clear: both;
+		}
+		.input_text{
+			height: 37px;
+			width: 300px;
+			border: 1px solid #e0e0e0;
+			padding:0 10px;
+		}
+		.screen_department{
+			padding: 5px 10px;
+			border: 1px solid #e0e0e0;
+			height: 35px;
+			margin-top: 10px;
+			width: 145px;
+		}
+		.screen_department option{
+			margin: 5px 10px;
+			/*border: 1px solid #e0e0e0;*/
+		}
+		.form-group{
+			width: 250px;
+			margin-bottom:0;
+			margin-top:10px;
+			float: left;
+		}
+
+		input::-webkit-input-placeholder {
+			color: #aeaeae; 
+		} 
+		input:-moz-placeholder {
+			color: #aeaeae; 
+		} 
+		input::-moz-placeholder {
+			color: #aeaeae; 
+		} 
+		input:-ms-input-placeholder {
+			color: #aeaeae; 
+		} 
+		.btn_box{
+			position: absolute;
+			bottom: 61px;
+			right: 20px;
+		}
+		table tr td{
+			width:150px;
+			padding-right: 10px;
+			padding-bottom: 10px;
+		}
+
+		table tr td input{
+			width:100% !important;
+		}
+
+		table tr td span{
+			font-size: 18px;
+			margin-left: 10px;: 
+		}
+
+	

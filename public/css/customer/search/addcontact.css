@@ -1,0 +1,64 @@
+.body{
+			padding: 20px;
+			padding-top: 0;
+			overflow: hidden;
+			/*margin-left: 10px;*/
+			background-color: #fff;
+			/*margin-right: 10px;*/
+		}
+		img{
+			width: 32px;
+			height:32px;
+			margin-right:10px;
+		}
+
+		.title{
+			color: #363636;
+			font-size: 13px;
+			margin-bottom: 0;
+		}
+		.content{
+			font-size: 13px;
+			margin-top:10px;
+			margin-bottom: 0;
+		}
+
+		.preserve,
+		.cancel{
+			margin-top:40px;
+			/*width: 	70px;*/
+			/*height:30px;*/
+			border-radius: 4px;
+			color: #fff;
+			font-size: 13px;
+			line-height: 30px;
+			text-align: center;
+			cursor:pointer;
+			float:left;
+		}
+		.cancel{
+			margin-left: 20px;
+		}
+		.clear{
+			clear: both;
+		}
+		.input_text{
+			height: 37px;
+			width: 300px;
+			border: 1px solid #e0e0e0;
+			padding:0 10px;
+		}
+		.lsglabel{
+			margin-right: 23px;
+			height: 20px;
+			line-height: 20px;
+			background-color: #fff;
+		}
+		.screen_department{
+			padding: 5px 10px;
+			border: 1px solid #e0e0e0;
+		}
+		.screen_department option{
+			margin: 5px 10px;
+			/*border: 1px solid #e0e0e0;*/
+		}

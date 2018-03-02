@@ -1,0 +1,183 @@
+.body{
+			padding:10px ;
+			padding-bottom: 30px;
+		}
+		/*清除浮动*/
+		.clearFix:after {
+			content: "";
+			display: block;
+			height: 0;
+			clear: both;
+		}
+
+		.body .list{
+			position: relative;
+			padding: 10px 0;
+			border-bottom: 1px solid #E4E4E4;
+		}
+
+		.body .list .left{
+			width: 20%;
+			float: left;
+		}
+		.body .list .right{
+			width:80%;
+			float: left;
+		}
+
+		.body .list select{
+			position: relative;
+			border:0;
+			width: 100%;
+			-webkit-appearance: none;
+			/*background: url(/public/img/home/xlcweb/u973.png) no-repeat;*/
+			background-position: 100%;
+			appearance:none;
+			-webkit-appearance:none;
+			-moz-appearance:none;
+			color:#4286F5;
+			margin-top: -1px;
+			z-index: 5;
+			background-color: transparent;
+		}
+
+		.body .list input{
+			position: absolute;
+			width: 116px;
+			top:10px;
+			right:25px ;
+			left:180px;
+			border:0;
+			opacity: 0;
+		}
+		.body .list .date_text{
+			margin-left: 40px;
+		}
+		.body .list .calendar{
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			top:12px;
+			right: 5px;
+		}
+		.body .list  .see{
+			float: right;
+			color: #BFAEBF;
+
+		}
+		.body .list  .see img{
+			
+			margin-top: -4px;
+		}
+		.body .btn_box{
+			overflow: hidden;
+			margin-top: 20px;
+		}
+		.body .btn_box input{
+			width: 145px;
+			height: 40px;
+		}
+		.body .btn_box input:last-child{
+			float: right;
+		}
+		/*进度条*/
+		.mature-progress p{
+			margin: 0;
+			color:#868686;
+			text-align: center;
+		}
+		.mature-progress .mature-progress-top {
+			position: relative;
+			padding-left: 15px;
+			font-size: 18px;
+			height: 40px;
+			line-height: 40px;
+		}
+		.mature-progress .mature-progress-top:before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 8px;
+			height: 20px;
+			left: 0;
+			top: 10px;
+			background: #e10482;
+			border-radius: 5px;
+		}
+		.mature-progress .mature-progress-bottom {
+			position: relative;
+			padding-left: 0;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box {
+			position: relative;
+			overflow: hidden;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box span{
+			color: #868686;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box span+span{
+			margin-left: 25px; 		
+		}
+
+		.mature-progress .mature-progress-bottom .mature-progress-box span:first-child{
+			margin-left: 6px;
+		}
+
+		.mature-progress .mature-progress-bottom .mature-progress-box.bgtwos {
+			position: absolute;
+			z-index: 0;
+			top: 27px;
+			left: 12px;
+		}
+
+		.mature-progress .mature-progress-bottom .bgtwos dl+dl{
+			margin-left: 40px !important;
+		}
+
+		.mature-progress .mature-progress-bottom .mature-progress-box dl {
+			text-align: center;
+			float: left;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box dl+dl{
+			margin-left: 17px;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box dl dt {
+			width: 20px;
+			height: 20px;
+			color: #fff;
+			text-align: center;
+			line-height: 44px;
+			border-radius: 50%;
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+			z-index: 3;
+		}
+		.mature-progress .mature-progress-bottom .bgtwos dl dt {
+			width: 15px;
+			height: 15px;
+			border: #ccc solid 1px;
+			background-color: #fff;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box .progress-box {
+			position: relative;
+			width: 223px;
+			height: 5px;
+			border-radius: 10px;
+			border: #ccc solid 1px;
+			background: #fff;
+			left: 17px;
+			margin: 12px 0;
+		}
+		.mature-progress .mature-progress-bottom .mature-progress-box .progress-box i {
+			position: absolute;
+			height: 3px;
+			background: #30baba;
+			left: 0px;
+			top: 0;
+			width: 0;
+		}
+
+		.mature-progress .bgcolor{
+			background-color: #30baba !important;
+		}

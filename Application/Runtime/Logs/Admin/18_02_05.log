@@ -1,0 +1,394 @@
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+ERR: PC client
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+DEBUG: []
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+ERR: Index
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000244s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000220s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000240s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.012214s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.012237s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0014s ]
+SQL: SELECT `name`,`value` FROM `config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000076s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000111s ]
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 349 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [8] Undefined index: children /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+NOTIC: [2] Invalid argument supplied for foreach() /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/d1902b00bb12d836568ec0efbe100e6b.php Á¨¨ 379 Ë°å.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005874s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005897s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000227s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000473s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000550s ]
+
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: PC client
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+DEBUG: []
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+ERR: Home/index
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000202s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000214s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000236s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0012s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.024121s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024154s ]
+SQL: SHOW COLUMNS FROM `customer_liaison` [ RunTime:0.0019s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer_liaison` WHERE ( `liaison_time` >= '2018-02-05' AND `liaison_time` < '2018-02-06'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer_liaison` WHERE ( `liaison_time` >= '2018-02-05' AND `liaison_time` < '2018-02-06'  ) AND ( delete_time is null ) AND `status` = 0 LIMIT 1   [ RunTime:0.0013s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `employee` WHERE ( `login_time` >= '2018-02-05' AND `login_time` < '2018-02-06'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `task` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `task` WHERE ( `end_date` >= '2018-02-05'  ) LIMIT 1   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `customer` [ RunTime:0.0019s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer` WHERE ( `create_time` < '2018-02-05' AND `create_time` >= '2018-02-04'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `customer` WHERE ( `create_time` >= '2018-02' AND `create_time` < '2018-03-05'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0048s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project` WHERE ( `contract_date` < '2018-02-05' AND `contract_date` >= '2018-02-04'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project` WHERE ( `contract_date` >= '2018-02' AND `contract_date` < '2018-03-05'  ) AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0042s ]
+SQL: SHOW COLUMNS FROM `config` [ RunTime:0.0030s ]
+SQL: SELECT `name`,`value` FROM `config` WHERE `status` = 1  [ RunTime:0.0016s ]
+NOTIC: [8] Undefined variable: task /sdc1/www/haitian.cms/Application/Admin/Controller/Home/IndexController.class.php Á¨¨ 158 Ë°å.
+SQL: SHOW COLUMNS FROM `notice` [ RunTime:0.0044s ]
+SQL: SELECT `notice_id`,`title` FROM `notice` WHERE ( delete_time is null ) ORDER BY create_time desc LIMIT 0,5   [ RunTime:0.0015s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000123s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000162s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006415s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006442s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000093s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000108s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000354s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000380s ]
+
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: PC client
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+DEBUG: {"month":"2018-02"}
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+ERR: Home/index
+[ 2018-02-05T14:59:36+08:00 ] 172.16.30.35 /service/home/index/monthlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000165s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000266s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0013s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.020032s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020082s ]
+
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+ERR: PC client
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+DEBUG: []
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+ERR: Statistics/situation
+[ 2018-02-05T14:59:39+08:00 ] 172.16.30.35 /service/statistics/situation/list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000180s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000282s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0013s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.012362s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.012388s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: is_ticket /sdc1/www/haitian.cms/Application/Admin/Controller/Statistics/SituationController.class.php Á¨¨ 374 Ë°å.
+NOTIC: [8] Undefined index: light_proj /sdc1/www/haitian.cms/Application/Admin/Controller/Statistics/SituationController.class.php Á¨¨ 393 Ë°å.
+SQL: SHOW COLUMNS FROM `department` [ RunTime:0.0013s ]
+SQL: SELECT `department_id`,`name` FROM `department` WHERE ( delete_time is null )  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `province` [ RunTime:0.0014s ]
+SQL: SELECT `province_id`,`province_name` FROM `province`  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `opponent` [ RunTime:0.0166s ]
+SQL: SELECT `name` FROM `opponent` WHERE ( delete_time is null )  [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM project aa INNER JOIN customer bb on aa.customer_id=bb.customer_id and bb.delete_time is null INNER JOIN project_attr ar on ar.project_id=aa.project_id  WHERE ( aa.delete_time is null ) AND `is_show_situation` = 1 LIMIT 1   [ RunTime:0.0013s ]
+SQL: SELECT aa.light_proj,bb.name customer_name,aa.name project_name,bb.business_id,`scale_fee`,aa.customer_id,aa.project_id,aa.son_status,aa.begin_date,aa.end_date,(select name from config_auto where config_auto_id=aa.fee_type) fee_type,bb.business_id,(select name from model_config where model_config_id=aa.proj_type) proj_type,`context`,if('Êú¨ÂÖ¨Âè∏'=company,concat(company,',',common_company),other_company) company,aa.level,aa.address,if('1'=is_ticket,'ÊòØ',if('0'=is_ticket,'Âê¶','')) is_ticket,`traffic`,`peace_passenger`,`relation`,`ability`,`ticket`,`run_ticket`,`run_passenger`,`income`,`programme`,`report` FROM project aa INNER JOIN customer bb on aa.customer_id=bb.customer_id and bb.delete_time is null INNER JOIN project_attr ar on ar.project_id=aa.project_id  WHERE ( aa.delete_time is null ) AND `is_show_situation` = 1 ORDER BY bb.province_id,bb.city_id,bb.county_id,aa.project_id LIMIT 0,5   [ RunTime:0.0042s ]
+SQL: SHOW COLUMNS FROM `model_config` [ RunTime:0.0013s ]
+SQL: SELECT * FROM `model_config` WHERE ( delete_time is null ) ORDER BY model_config_id  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000087s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000120s ]
+NOTIC: [8] Undefined index: begin_time /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/55918cc9d879ca9e4c096253052feb12.php Á¨¨ 119 Ë°å.
+NOTIC: [8] Undefined index: end_time /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/55918cc9d879ca9e4c096253052feb12.php Á¨¨ 124 Ë°å.
+NOTIC: [8] Undefined index: name /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/55918cc9d879ca9e4c096253052feb12.php Á¨¨ 141 Ë°å.
+NOTIC: [8] Undefined index: other_status /sdc1/www/haitian.cms/Application/Runtime/Cache/Admin/55918cc9d879ca9e4c096253052feb12.php Á¨¨ 209 Ë°å.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025020s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025044s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000161s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000180s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000270s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000382s ]
+
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: PC client
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: []
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Statistics/situation
+[ 2018-02-05T14:59:41+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000396s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000741s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000800s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0011s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.029224s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.029265s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0026s ]
+SQL: SHOW COLUMNS FROM `project_copy` [ RunTime:0.0043s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project_copy` WHERE ( delete_time is null ) LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `project_copy` WHERE ( delete_time is null ) LIMIT 0,15   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000046s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000071s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003739s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003775s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000078s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000092s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000244s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000261s ]
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: PC client
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: {"note":"test2221133"}
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Statistics/situation
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 0 :: 1,±±æ©, «,test111,test11-01,,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 1 :: 2,±±æ©, «,test111,test11-02,,2018-01-15~2018-01-26,0.000,,∑Ò,"fsdfsdf",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 2 :: 3,±±æ©, «,test2-3,test2-3,,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 3 :: 4,±±æ©,∑Ò,3322org,≤‚ ‘¡¡ªØ,,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 4 :: 5,…ΩŒ˜, «,‘À≥« –∫”ΩÚŒƒŒÔ¬√”Œæ÷,¥∫Ω⁄µ∆ª·,,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 5 :: 6,ƒ⁄√…π≈, «,∂ıÕ–øÀ«∞∆Ï◊°∑ø”Î≥«œÁΩ®…Ëæ÷,2018ƒÍ¥∫Ω⁄¡¡ªØ,,~,319.000,∂®◊ˆ,∑Ò,"",∆’Õ®,Ω÷µ¿,√‚∑—,"",,"’˛∏Æ",,"∂ıÕ–øÀ«∞∆Ï◊°∑ø∫Õ≥«œÁπÊªÆΩ®…Ëæ÷≤…π∫∂ıÕ–øÀ«∞∆Ï∞Ω¿’’Ÿ∆‰’Ú∫Õ≥«¥®’Ú’Ú«¯2018ƒÍ¥∫Ω⁄¡¡ªØ…Ëº∆ ©π§◊‹≥–∞¸π´ø™’–±Íπ´∏Ê-±»±»’–±Í≤…π∫Õ¯  https://www.bibenet.com/bid/detail/4572997",√‚∑—,,,"","https://www.bibenet.com/bid/detail/4572997"
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 6 :: 7,∞≤ª’1, «,∫œ∑ ≥«⁄Ú√Ì/∫œ∑ ≥«⁄Ú√ÌΩ®…ËÕ∂◊ ”–œﬁ‘»Œπ´Àæ,∫œ∑ ≥«⁄Ú√Ì2018–¬¥∫µ∆’π,,~,0.000,∂®◊ˆ,∑Ò,"",∆’Õ®,≥«⁄Ú√ÌΩ÷«¯,,"",,"",,"2018ƒÍ ◊ΩÏ–¬¥∫µ∆’π£¨‘§À„98ÕÚ£¨’–±Í£¨ƒœæ©«ÿª¥≤ µ∆≤Œ”ÎœÓƒø",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 7 :: 8,∞≤ª’1, «,∞≤ª’ÃÏø’ŒƒªØ¥´√Ω”–œﬁπ´Àæ,12312,µ∆ª·œÓƒø,~,0.000,,∑Ò,"",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 8 :: 9,∞≤ª’1, «,∞≤ª’ÃÏø’ŒƒªØ¥´√Ω”–œﬁπ´Àæ,44444,¡¡ªØœÓƒø,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 9 :: 10,∞≤ª’1, «,Œﬂ∫˛∑ΩÃÿ¬√”Œ∂»ºŸ«¯/Œﬂ∫˛ª™«øŒƒªØø∆ºº”–œﬁπ´Àæ,Œﬂ∫˛∑ΩÃÿ¥∫Ω⁄µ∆ª·,,~,0.000,∂®◊ˆ, «,"±æπ´Àæ",∆’Õ®,,,"",,"",,"¥∫Ω⁄µ∆ª·Œ“Àæ÷∆◊˜£¨πÊƒ£300ÕÚ◊Û”“",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 10 :: 11,∏£Ω®,∑Ò,∏£÷› –Œ˜∫˛π´‘∞π‹¿Ì¥¶,∏£÷›Œ˜∫˛π´‘∞2018ƒÍ”≠¥∫∑’Œß≤º÷√,,~,50.000,∂®◊ˆ,∑Ò,"",∆’Õ®,Œ˜∫˛π´‘∞,,"",,"",,"",,,,"","∏£÷›Œ˜∫˛π´‘∞2018ƒÍ”≠¥∫∑’Œß≤º÷√’–±Íπ´∏Ê http://www.ccgp.gov.cn/cggg/dfgg/gkzb/201712/t20171221_9376155.htm"
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 11 :: 12,∏£Ω®, «,πƒ¬•«¯ÀÆ≤øΩ÷µ¿,2018ƒÍ¥∫Ω⁄º∞‘™œ¸Ω÷æ∞,,~,0.000,∂®◊ˆ,∑Ò,"",∆’Õ®,Ω÷µ¿,∑Ò,"",,"",,"∂‘÷ÿµ„¬∑∂ŒΩ¯––2018ƒÍ¥∫Ω⁄°¢‘™œ¸Ω⁄Ω÷æ∞≤º÷√°£Ω÷æ∞÷ÿµ„≤º’πµ¿¬∑£∫“ª°¢≤º÷√¬∑∂Œ£∫£®1£©ŒÂ“ª÷–¬∑–¬∞Ÿ∫œ–›œ–ª·À˘÷¡ŒÂ∏£ÃÏ«≈250√◊£¨–À“µ“¯––÷¡ŒÂ∏£ÃÏ«≈240√◊£ª£®2£©ø∆ººπ›150√◊π≤19ø√ ˜£ª£®3£©ŒÂ“ª°¢π≈ÃÔ¬∑ø⁄÷¡ŒÂ“ª°¢∏£–¬¬∑ø⁄330√◊£ª£®4£©π≈ÃÔ÷ß¬∑(À´≤‡)1700√◊£ª£®5£©π≈ÃÔ¬∑£®«Ì∂´∫”ÃÏ«≈-π§µÿ£©200√◊£ª £®6£©¡˙Õ•¬∑¡˘Ω®√≈ø⁄60√◊£ª£®7£©Ω÷µ¿ƒ⁄∫” Ø¿∏∏À100√◊£ª£®8£©»˝◊˘ÃÏ«≈≤Â∫Ï∆Ï£ª£®7£©¡˙Õ•¬∑450√◊°£œ÷Ω¯––π´ø™’–±Í£¨◊‹øÿ÷∆º€‘⁄17ÕÚ‘™“‘ƒ⁄",,,,"","πÿ”⁄πƒ¬•«¯ÀÆ≤øΩ÷µ¿2018ƒÍ¥∫Ω⁄º∞‘™œ¸Ω÷æ∞’–±Íµƒπ´∏Ê http://www.gl.gov.cn/archive/2017/12/26/804819.html"
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 12 :: 13,∏£Ω®, «,πƒ¬•«¯ŒÂ∑ÔΩ÷µ¿,2018ƒÍ¥∫Ω⁄º∞‘™œ¸Ω⁄Ω÷æ∞≤º÷√,,~,0.000,∂®◊ˆ,∑Ò,"",∆’Õ®,Ω÷µ¿,,"",,"",,"‘§À„£∫16ÕÚ°£
+≤º÷√¬∑∂Œ
+    1°¢Õ≠≈Ã¬∑£®√∑‘∞æ∆µÍ°™∂˛ª∑¬∑ø⁄£©µ•≤‡‘º850√◊£ª
+    2°¢Õ≠≈Ã¬∑£®µÁ¥Û≈‘µƒÀ¬√Ì°™∂˛ª∑¬∑ø⁄£©µ•≤‡‘º640√◊£ª
+    3°¢∑º«ﬂ¬∑ °≤©ŒÔπ›’˝√≈ø⁄÷¡∑º«ﬂ‘∞À´≤‡‘º900√◊£ª
+    4°¢ÃÏ»™¬∑À´≤‡‘º2000√◊£ª
+    5°¢»™Ã¡ÃÏ«≈≤Â¡¢∫Ï∆Ï200√Ê£ª
+    6°¢Õ≠≈Ã¬∑”Î∂˛ª∑¬∑Ωª≤Ê¬∑ø⁄≤Â∫Ï∆Ï300√Ê£ª
+    »˝°¢≤º÷√ƒ⁄»›
+    1°¢≤º÷√±Í◊º£∫
+    (1)∏˜¬∑∂Œµ¿¬∑À´≤‡ ˜ƒæ¿≠œﬂπ“µ∆£¨10√◊Œ™1◊È£¨√ø◊È3’µ≥Ò≤ºπ§“’π¨µ∆£®“™«Û¥¯∫Ï—ﬁΩ⁄«Ï…´≤ °¢≤ª“™µ≠ª∆…´£©°¢¡Ω’µ∫Ïµ∆¡˝°¢3Ãı¬˙–«µ∆£¨π≤º∆‘º439◊È£¨◊Ó÷’“‘ µº  π”√ ˝¡øŒ™◊º£ª
+    (2)Õ≠≈Ã¬∑∫Õ∂˛ª∑¬∑¥Û¬∑ø⁄µƒ√øø√ ˜“ª◊Èµ∆ Œ£¨ ˜∏…≤¯»∆‘º15mµƒledµ∆¥¯(≤ …´/≈Øπ‚/¿∂…´/∞◊…´)£¨ ˜…œπ“5’µ≥Ò≤ºπ§“’π¨µ∆£¨15Ãı¡˜–«µ∆£¨3Ãı¬˙ÃÏ–«µ∆£¨15’µledÀÆπ˚µ∆°£π≤º∆‘º10◊È°£◊Ó÷’“‘ µº  π”√ ˝¡øŒ™◊º£ª
+    (3)∑º«ﬂ¬∑ °≤©ŒÔπ›’˝√≈ø⁄÷¡∑º«ﬂ‘∞À´≤‡ ˜ƒæ¿≠œﬂπ“µ∆£¨10√◊Œ™1◊È£¨√ø◊È5’µ∫Ïµ∆¡˝£¨3Ãı¬˙–«µ∆£¨π≤º∆‘º90◊È£¨◊Ó÷’“‘ µº  π”√ ˝¡øŒ™◊º£ª
+    (4)»™Ã¡ÃÏ«≈∫Ï∆Ï∞¥’’√ø√◊3√Ê≤º÷√£¨◊Ó÷’“‘ µº  π”√ ˝¡øŒ™◊º£ª
+    (5)Õ≠≈Ã¬∑”Î∂˛ª∑¬∑Ωª≤Ê¬∑ø⁄∞¥’’√ø√◊1√Ê≤º÷√£¨◊Ó÷’“‘ µº  π”√ ˝¡øŒ™◊º£ª",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 13 :: 14,∏£Ω®, «,¬ﬁ‘¥∫£—Û ¿ΩÁπ›£®¬ﬁ‘¥ÕÂ±ı∫£¬√”ŒŒƒªØø™∑¢”–œﬁπ´Àæ£©,2018ƒÍ¬ﬁ‘¥ÕÂ”≠¥∫µ∆ª·(2017∏£÷›π˙º µ∆π‚Ω⁄),,2017-12-24~2018-04-03,0.000,,∑Ò,"",∆’Õ®,,,"",,"",,"¥À¥Œµƒπ˙º µ∆π‚ºŒƒÍª™”…∏£÷›¬ﬁ‘¥ÕÂ∫£—Û ¿ΩÁ¡™∫œ–Ø≥Ã¬√––Õ¯≥‚æﬁ◊ —˚«Î±»¿˚ ±µ∆π‚…Ëº∆Õ≈“‘º∞Àƒ¥®◊‘π±√Òº‰µ∆π‚ºº“’¥Û ¶π≤Õ¨¥Ú‘Ï£°
+’˚∏ˆµ∆’π∑÷√Œª√÷Æπ‚°¢ÕØª∞ ¿ΩÁ¡Ω∏ˆ÷˜Ã‚∞ÂøÈ£¨◊‹’ºµÿ√Êª˝‘º20000∆Ω∑Ω√◊£¨¡Ω¥Û∞ÂøÈƒ⁄∫¨16◊Èµ∆◊È
+◊‘π±÷⁄ˆŒ≤ µ∆÷∆◊˜",‘§ €∆±19‘™/’≈£¨’˝≥£≥…»À∆±29‘™/’≈,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 14 :: 15,∏£Ω®, «,¡˙Œƒ«¯∑Áæ∞‘∞¡÷π‹¿Ì¥¶,2018ƒÍ¥∫Ω⁄°¢‘™œ¸ª®µ∆,,~,120.000,∂®◊ˆ,∑Ò,"",∆’Õ®,,,"",,"",,"",,,,"","2018ƒÍ¥∫Ω⁄°¢‘™œ¸ª®µ∆…Ëº∆÷∆◊˜°¢∞≤◊∞º∞’–±Í¥˙¿Ìµ•Œª’–±Íπ´∏Êhttp://www.ccgp.gov.cn/cggg/dfgg/gkzb/201712/t20171205_9283823.htm"
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 15 :: 16,∏£Ω®, «,¡˙—“÷æ∏ﬂ…Ò÷›ª∂¿÷‘∞£®÷æ∏ﬂ∂Ø¬˛ø∆ºº”–œﬁπ´Àæ£©,¥∫Ω⁄µ∆ª·,,~,0.000,√≈∆±∑÷≥…, «,"",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 16 :: 17,∏£Ω®, «,£®≥§Õ°œÿ£©∏£Ω® °π≈‘œÕ°÷›¬√”Œ∑¢’π”–œﬁπ´Àæ,¥∫Ω⁄µ∆ª·,,~,0.000,∂®◊ˆ,∑Ò,"",∆’Õ®,,,"",,"",,"”…◊”π´Àæ—›“’π´ÀææﬂÃÂ≥–∞Ï÷¥––£¨¥∫Ω⁄º∆ªÆ‘⁄“‘π„≥°◊ˆµ∆ª·£¨π„≥°ŒÂ¡˘∞Ÿ∆Ω£¨œÎ»√Œ“Àæ◊ˆ∑Ω∞∏±®º€°£ΩÈ…‹πÊƒ£Ã´–°£¨æ‹æ¯°£÷Æ«∞“∂◊‹±Ì æ‘⁄¡Ω∏ˆ◊„«Ú≥°¥Ûµƒπ„≥°◊ˆµ∆ª·£¨ΩÈ…‹200ÕÚ◊Û”“ƒ‹≥ˆ–ßπ˚°£",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 17 :: 18,Ω≠Œ˜, «,–¬∏…œÿ –’˛‘∞¡÷π‹¿ÌÀ˘,¥∫Ω⁄◊∞ Œ≤º÷√º∞µ∆¡˝–¸π“∞≤◊∞,,~,0.000,∂®◊ˆ,∑Ò,"",∆’Õ®,,,"",,"",,"¥∫Ω⁄◊∞ Œ≤º÷√º∞µ∆¡˝–¸π“∞≤◊∞œÓƒø°£◊ Ω¿¥‘¥£∫’˛∏Æ≤∆’˛◊ Ω°£A¥∫Ω⁄◊∞ Œ≤º÷√£∫‘§À„45.8333ÕÚ£ªBµ∆¡˝–¸π“∞≤◊∞£∫‘§À„15.318ÕÚ°£",,,,"","–¬∏…œÿ - º™∞≤ –π´π≤Ωª“◊◊ ‘¥Õ¯ http://www.japrtc.gov.cn/jyxx/zfcg/zbgg/xgx/201712/t20171227_2505829.htm"
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 18 :: 19,π„∂´, «,∂´›∏ – Ø¡˙’ÚŒƒªØπ„≤•µÁ ”∑˛ŒÒ÷––ƒ,test,,~,0.000,∂®◊ˆ, «,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: 19 :: 20,π„∂´, «,∂´›∏ – Ø¡˙’ÚŒƒªØπ„≤•µÁ ”∑˛ŒÒ÷––ƒ,test02,,~,0.000,,∑Ò,"±æπ´Àæ",∆’Õ®,,,"",,"",,"",,,,"",""
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000204s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000332s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000363s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.014725s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.014759s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `project_copy` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `project_copy` WHERE `operate_date` = '2018-02-05' AND `status` = 0 AND ( delete_time is null ) LIMIT 1   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0023s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project` WHERE ( delete_time is null ) AND `level` <> 'Z' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT (select province_name from province where province_id=bb.province_id limit 1) prov_name,if('1'=pj.light_proj,'ÊòØ','Âê¶') is_light,bb.name cust_name,pj.name,(select name from model_config where model_config_id=pj.proj_type) proj_type,`begin_date`,`end_date`,`scale_fee`,(select name from config_auto where config_auto_id=pj.fee_type) fee_type,if('1'=is_ticket,'ÊòØ','Âê¶') is_ticket,if('Êú¨ÂÖ¨Âè∏'=company,`company`,other_company) company,concat(level,'Á∫ß') level,pj.address,`ticket`,`traffic`,`peace_passenger`,`relation`,`ability`,`run_ticket`,`run_passenger`,`income`,`programme`,`report`,`context` FROM project pj INNER JOIN project_attr ar on ar.project_id=pj.project_id INNER JOIN customer bb on pj.customer_id=bb.customer_id and bb.delete_time is null  WHERE ( pj.delete_time is null ) AND `is_show_situation` = 1 ORDER BY bb.province_id,bb.city_id,bb.county_id,pj.project_id  [ RunTime:0.0025s ]
+SQL: INSERT INTO `project_copy` (`abc_num`,`operate_date`,`status`,`note`,`file_path`,`file_name`,`id`,`operator`) VALUES ('0','2018-02-05','0','test2221133','/down/2018-02','project-2018-02-05-145950.csv','ac13709ccafab76dac651b5c77a88b94','1000') [ RunTime:0.0011s ]
+
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: PC client
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: []
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+ERR: Statistics/situation
+[ 2018-02-05T14:59:50+08:00 ] 172.16.30.35 /service/statistics/situation/bak
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000170s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000201s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000221s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0009s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.010871s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.010895s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `project_copy` [ RunTime:0.0013s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `project_copy` WHERE ( delete_time is null ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `project_copy` WHERE ( delete_time is null ) LIMIT 0,15   [ RunTime:0.0012s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000066s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003527s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003548s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000076s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000089s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000253s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000277s ]
+
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+ERR: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+ERR: PC client
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+DEBUG: {"id":"ac13709ccafab76dac651b5c77a88b94"}
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+DEBUG: {"employee_id":"1000","employee_code":"root","name":"\u8d85\u7ea7\u7ba1\u7406\u5458","password":"bbc6cae961297b95d4c3cb974419e866","phone":"13888880000","email":"","department_id":"100011","role_id":"10012","head_image":"\/public\/img\/info\/no_user.png","thumbnail_url":"\/public\/img\/info\/no_user.png","sex":"1","status":"1","login_status":"1","login_time":"2018-02-02 14:52:23","login_quantity":"1","create_time":"2017-10-11 16:24:21","update_time":null,"delete_time":null,"operator":null,"department_name":"IT","role_name":"\u8d85\u7ea7\u7ba1\u7406\u5458","role_type_code":"boss","department_type_id":"boss"}
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+ERR: Statistics/situation
+[ 2018-02-05T14:59:53+08:00 ] 172.16.30.35 /service/statistics/situation/down?id=ac13709ccafab76dac651b5c77a88b94
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000274s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000508s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000548s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `employee` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `employee` WHERE `employee_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+INFO: Run Admin\Behaviors\PreprocessBehavior [ RunTime:0.016451s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016495s ]
+SQL: SHOW COLUMNS FROM `project` [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `project_copy` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `project_copy` WHERE `id` = 'ac13709ccafab76dac651b5c77a88b94' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000287s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000306s ]
+
