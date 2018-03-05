@@ -511,8 +511,9 @@ class SearchController extends Controller
 		
 		$provinces = M('province')->alias('aa')->where('delete_time is null')
 			->field($field)->order('province_id')->select();
-		
-		array_multisort(array_column($provinces, 'num'), SORT_NUMERIC, SORT_DESC, $provinces);
+		if(isset($this->param['list_type']) && 0 == $this->param['list_type']){
+			array_multisort(array_column($provinces, 'num'), SORT_NUMERIC, SORT_DESC, $provinces);
+		}
 		
 		$this->ajaxReturn(['status' => 'success', 'data' => $provinces]);
 	}

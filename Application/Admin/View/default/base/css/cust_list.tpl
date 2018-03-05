@@ -79,7 +79,7 @@
         .lately_box{
             /*padding:30px 20px 10px 20px;*/
             padding-top:30px;
-            padding-bottom: :10px;
+            padding-bottom:10px;
             border-bottom: 1px solid #e0e0e0;
         }
 
@@ -252,7 +252,7 @@
         .screen_box .list_table{
             height: 570px;
             padding:0;
-            padding-top: 40px;
+            /*padding-top: 20px;*/
             font-size: 13px;
             overflow-x: visible;
            /* overflow-y: hidden;*/

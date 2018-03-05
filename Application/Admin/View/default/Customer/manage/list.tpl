@@ -132,6 +132,12 @@
 					</span>
                     <div class="clear"></div>
                     <div class="list_table mt-10">
+                        <div style="margin-left: 20px;margin-top: 10px;">
+                            <select class="screen_department item-w" name="list_type" style="color: #2E8DED;">
+                                <option value="0">按客户数量排序</option>
+                                <option value="1">按省市区排序</option>
+                            </select>
+                        </div>
                         <div class="top">
                             <p style="width:23%">省/直辖/自治区</p>
                             <p style="width:23%">市</p>
@@ -347,9 +353,13 @@
 				showOnlyCust();
 				return;
 			}
+			getProvince()
 
+		}
+        function getProvince() {
 			var param = {
-				type: cur_type
+				type: cur_type,
+				list_type:$('select[name=list_type]').val()
 			}
 			var url = '/service/customer/search/getProvince';
 			K.doAjax(param, url, function (res) {
@@ -367,7 +377,9 @@
 				}
 			});
 		}
-
+		$('select[name=list_type]').change(function () {
+			getProvince()
+		});
 		function setProvList(id, me) {
 			backColor(me)
 
@@ -613,6 +625,7 @@
 			$(".Customer_ul").show();
 			$(".screen_box .top p").eq(3).show()
 			$(".screen_box .top ").children("p:eq(3)").siblings().hide();
+			$('select[name=list_type]').hide();
 		}
 
 		function showType() {
@@ -620,6 +633,8 @@
 			$(".city_ul").hide();
 			$(".area_ul").hide();
 			$(".Customer_ul").hide();
+			$('select[name=list_type]').show();
+			$(".screen_box .top ").children("p:eq(0)").show();
 			$(".screen_box .top ").children("p:eq(0)").siblings().hide();
 		}
 
