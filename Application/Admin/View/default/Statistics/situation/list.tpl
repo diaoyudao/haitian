@@ -344,7 +344,7 @@
 			});
 		}
 
-		var $list = JSON.parse('<php>echo json_encode($data)</php>');
+//		var $list = JSON.parse('<php>echo json_encode($data);</php>');
 
 		function showAddr(id) {
 			cur = {};

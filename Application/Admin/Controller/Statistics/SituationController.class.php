@@ -88,7 +88,9 @@ class SituationController extends Controller
 			->join('customer bb on aa.customer_id=bb.customer_id and bb.delete_time is null')
 			->join('project_attr ar on ar.project_id=aa.project_id')
 			->count();
-		$page = new \Think\Page($counts, $this->param['pg_size'] ?? self::PAGE_SIZE);
+		$page_size = !empty($this->param['pg_size']) ? $this->param['pg_size'] : self::PAGE_SIZE;
+		
+		$page = new \Think\Page($counts, $page_size);
 		$page->show();
 		
 		$field = "aa.light_proj,bb.name customer_name,aa.name project_name,bb.business_id, scale_fee,aa.customer_id,aa.project_id,aa.son_status,"
@@ -97,7 +99,7 @@ class SituationController extends Controller
 			. "aa.level,aa.address,if('1'=is_ticket,'是',if('0'=is_ticket,'否','')) is_ticket,traffic,peace_passenger,relation,ability,ticket,run_ticket,run_passenger,out_value,programme,report";
 		
 		$this->result = $this->base_model->where($this->where)
-			->page($this->param['pg'] ?? 1, $this->param['pg_size'] ?? self::PAGE_SIZE)
+			->page($this->param['pg'] ?? 1, $page_size)
 			->field($field)->alias('aa')
 			->join('customer bb on aa.customer_id=bb.customer_id and bb.delete_time is null')
 			->join('project_attr ar on ar.project_id=aa.project_id')
@@ -108,8 +110,6 @@ class SituationController extends Controller
 				$Textarea = new Textarea($v['context']);
 				$v['context'] = $Textarea->convertEnterToNone();
 			}
-//			dump($v['context']);
-			
 		}
 		$this->assign('data', $this->result);
 		$this->assign('pager', $page);
@@ -415,6 +415,8 @@ class SituationController extends Controller
 		if (!empty($this->param['name'])) {
 			$this->where['aa.name'] = ['like', '%' . $this->param['name'] . '%'];
 		}
+		
+		
 	}
 	
 	private function checkParameter($type)
