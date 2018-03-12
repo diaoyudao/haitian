@@ -286,15 +286,20 @@
                         <a onclick="showTask('任务','/service/task/manage/change?task_id={$wt.task_id}')">新任务需要完成：{$wt.context}</a>
                     </case>
                     <case value="liaison">
-                        <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}
+                        <a onclick="changeMainPage('/service/customer/search/detail?customer_id={$wt.customer_id}')">客户：{$wt.customer_name}
                             的项目：{$wt.project_name}需要跟进，点击查看</a>
                     </case>
                     <case value="contact">
-                        <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}
+                        <a  onclick="changeMainPage('/service/customer/search/detail?customer_id={$wt.customer_id}')">客户：{$wt.customer_name}
                             的联系人：{$wt.name}生日，联系客户送上祝福，点击查看</a>
                     </case>
+                    <case value="cust">
+                        <a onclick="delCust({$wt.customer_employee_id},{$wt.customer_id})"
+                          >新客户{$wt.customer_name}
+                            ，点击查看</a>
+                    </case>
                     <default/>
-                    <a href="/service/project/manage/approve?type={$wt.approve}">项目：{$wt.name}
+                    <a onclick="changeMainPage('/service/project/manage/approve?type={$wt.approve}')">项目：{$wt.name}
                         需要{$arr[$wt[approve_status]]}</a>
                 </switch>
 
@@ -487,7 +492,7 @@
 			}
 		});
 	});
-	var $is_layer='{$Think.session.is_layer}';
+	var $is_layer = '{$Think.session.is_layer}';
 	if ($is_layer == '') {
 		setTimeout(login_repeat, 5000);
 	}
@@ -502,13 +507,31 @@
 			}
 		})
 	}
+
 	$('.layui-layer-btn').click(function () {
 		$('#layui-layer1').hide();
 	})
-    $('.layui-layer-close').click(function () {
+	$('.layui-layer-close').click(function () {
 		$('#layui-layer1').hide();
-	})
+	});
 
+	function delCust(ce_id, id) {
+		var url = '/service/home/index/delnewcustomer';
+		var param = {
+			id: ce_id,
+		}
+		K.doAjax(param, url, function (e) {
+			if (e.status && e.status == 'success') {
+				changeMainPage('/service/customer/search/detail?customer_id=' + id);
+			} else {
+				if (e.message) {
+					layer.msg(e.message, {icon: 2, time: 2000});
+				} else {
+					layer.msg('后台错误!', {icon: 2, time: 2000});
+				}
+			}
+		});
+	}
 </script>
 
 </body>

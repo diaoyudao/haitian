@@ -29,7 +29,7 @@ class IndexController extends Controller
 			//今日联络次数,今日联络失败
 			list($liaison, $failed_liaison) = $this->liaison();
 			//今日登陆次数
-			$login_num=$this->login();
+			$login_num = $this->login();
 			//待完成任务
 			$unfinish = $this->unfinishedTask();
 			//昨日新增客户,本月新增客户
@@ -61,14 +61,14 @@ class IndexController extends Controller
 		if (session('employee')['role_type_code'] == 'salesman') {
 			$week = date('W');
 			$year = date('Y');
-			$pre_year= date('Y',strtotime('-1 year',time()));
-			$next_year= date('Y',strtotime('+1 year',time()));
+			$pre_year = date('Y', strtotime('-1 year', time()));
+			$next_year = date('Y', strtotime('+1 year', time()));
 			if ($week > 1) {
 				$where['week'] = $week - 1;
-				$where['create_time'] = [['lt', $next_year],['gt',$year]];
+				$where['create_time'] = [['lt', $next_year], ['gt', $year]];
 			} else {
 				$where['week'] = 52;
-				$where['create_time'] = [['lt', $year],['gt',$pre_year]];
+				$where['create_time'] = [['lt', $year], ['gt', $pre_year]];
 			}
 			$where['_string'] = 'delete_time is null';
 			$model = M('work_plan');
@@ -93,8 +93,19 @@ class IndexController extends Controller
 		$config = $this->getConfig();
 		$common_where = $this->getDepartmentWhere();
 		$wait = [];
+		//新分配客户
+		$new_cust_where['employee_id'] = session('employee_id');
+		$next_day = date("Y-m-d", strtotime("+1 day"));
+		$new_cust_where['_string'] = "((aa.update_time is null) or (aa.update_time < '" . $next_day . "')) and aa.delete_time is null";
+		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d')];
+		$field = 'aa.*,(select name from customer where customer_id=aa.customer_id and delete_time is null) customer_name';
+		$new_cust = M('customer_employee')->alias('aa')->field($field)->where($new_cust_where)->select();
+		foreach ($new_cust as &$item) {
+			$item['type'] = 'cust';
+		}
+		
 		if (session('employee')['role_type_code'] == 'boss') {
-			if(session('employee_id') != 1000){
+			if (session('employee_id') != 1000) {
 				$project_where['approve'] = ['in', [1, 2, 3]];
 				$project_where['approve_status'] = 2;
 				$project_where['_string'] = 'delete_time is null';
@@ -102,10 +113,10 @@ class IndexController extends Controller
 				$wait = $project;
 			}
 		} else {
-			$project=[];
+			$project = [];
 			if (session('employee')['role_type_code'] == 'director') {
 				$project_where['approve'] = ['neq', 0];
-				$project_where['approve_status'] = ['in',[1,3]];
+				$project_where['approve_status'] = ['in', [1, 3]];
 				$project_where['next_department_id'] = session('employee')['department_id'];
 				$project_where['_string'] = 'delete_time is null';
 				$project = M('project')->where($project_where)->select();
@@ -139,14 +150,14 @@ class IndexController extends Controller
 //			$task_where = $common_where;
 			$task_where['end_date'] = [['elt', date('Y-m-d', strtotime('+' . $config['task_limit'] . ' day'))], ['egt', date('Y-m-d')]];
 			$task_where['_string'] .= 'delete_time is null and over_time is null';
-			if(!isset($task_where['department_id'])){
+			if (!isset($task_where['department_id'])) {
 				$task_where['handler'] = ['like', "%" . session('employee_id') . "%"];
 			}
 			$task = M('task')->where($task_where)->select();
 			foreach ($task as &$val) {
 				$val['type'] = 'task';
 			}
-			$wait = array_merge($project,$liaison, $contact, $task);
+			$wait = array_merge($project, $liaison, $contact, $task, $new_cust);
 			
 		}
 //		dump(M()->_sql());
@@ -216,12 +227,12 @@ class IndexController extends Controller
 					$where['employee_id'] = session('employee_id');
 					break;
 			}
-			$where['next_time'] = [['egt',  $parameter['month']], ['lt',  date('Y-m', strtotime('+1 month', strtotime($parameter['month'])))]];
+			$where['next_time'] = [['egt', $parameter['month']], ['lt', date('Y-m', strtotime('+1 month', strtotime($parameter['month'])))]];
 			$where['_string'] = 'delete_time is null';
 			$temp = M('customer_liaison')->where($where)->select();
-			foreach ($temp as $v){
-				$i=date('j',strtotime($v['next_time']));
-				if(in_array($i,$list)){
+			foreach ($temp as $v) {
+				$i = date('j', strtotime($v['next_time']));
+				if (in_array($i, $list)) {
 					continue;
 				}
 				$list[] = $i;
@@ -238,12 +249,12 @@ class IndexController extends Controller
 	public function notice()
 	{
 //		$boss_department_id = $this->getBossDepartment_id();
-		
+
 //		$where['department_id'] = [['eq', $boss_department_id], ['eq', session('employee')['department_id']], 'or'];
-		if(session('employee')['role_type_code'] !='boss'){
-			$where['department_id']=['like','%'.session('employee')['department_id'].'%'];
+		if (session('employee')['role_type_code'] != 'boss') {
+			$where['department_id'] = ['like', '%' . session('employee')['department_id'] . '%'];
 		}
-		$where['_string']='delete_time is null';
+		$where['_string'] = 'delete_time is null';
 		$model = M('notice');
 		$res = $model->field('notice_id,title')->where($where)->limit(0, 5)->order('create_time desc')->select();
 		$res = $res ?? [];
@@ -258,10 +269,10 @@ class IndexController extends Controller
 	{
 //		$boss_department_id = $this->getBossDepartment_id();
 //		$where['department_id'] = [['eq', $boss_department_id], ['eq', session('employee')['department_id']], 'or'];
-		if(session('employee')['role_type_code'] !='boss'){
-			$where['department_id']=['like','%'.session('employee')['department_id'].'%'];
+		if (session('employee')['role_type_code'] != 'boss') {
+			$where['department_id'] = ['like', '%' . session('employee')['department_id'] . '%'];
 		}
-		$where['_string']='delete_time is null';
+		$where['_string'] = 'delete_time is null';
 		$model = M('notice');
 		$count = $model->field('notice_id,title,create_time')->where($where)->count();
 		$page_size = 10;
@@ -293,31 +304,32 @@ class IndexController extends Controller
 	//添加通知
 	public function addNotice()
 	{
-		if(IS_GET) {
-			$res=$this->getNoticeDepartment();
-			$this->assign('department',$res);
+		if (IS_GET) {
+			$res = $this->getNoticeDepartment();
+			$this->assign('department', $res);
 			$this->display();
 			return;
 		}
-
-			$parameter = $this->checkNoticeParameter();
-			$parameter['department_id']=json_encode($parameter['department_id']);
-			$model = new OcModel('notice');
-			$model->startTrans();
-			
-			try {
-				$ret = $model->add($parameter);
-				if (false === $ret) {
-					\Think\Log::write("添加数据失败：" . $this->model->getDbError());
-					$this->ajaxReturn(['status' => 'failed', 'message' => '添加数据失败']);
-				}
-				$model->commit();
-			} catch (Exception $ex) {
-				$this->ajaxReturn(['status' => 'failed', 'message' => $ex->getMessage()]);
+		
+		$parameter = $this->checkNoticeParameter();
+		$parameter['department_id'] = json_encode($parameter['department_id']);
+		$model = new OcModel('notice');
+		$model->startTrans();
+		
+		try {
+			$ret = $model->add($parameter);
+			if (false === $ret) {
+				\Think\Log::write("添加数据失败：" . $this->model->getDbError());
+				$this->ajaxReturn(['status' => 'failed', 'message' => '添加数据失败']);
 			}
-			$this->ajaxReturn(['status' => 'success']);
-
+			$model->commit();
+		} catch (Exception $ex) {
+			$this->ajaxReturn(['status' => 'failed', 'message' => $ex->getMessage()]);
+		}
+		$this->ajaxReturn(['status' => 'success']);
+		
 	}
+	
 	public function loginRepeat()
 	{
 		if (session('is_layer') == 'no_layer') {
@@ -346,6 +358,27 @@ class IndexController extends Controller
 		$res['handler'] = M('employee')->where(['employee_id' => ['in', $handler], '_string' => 'delete_time is null'])->select();
 		$this->assign('task', $res);
 		$this->display();
+	}
+	
+	//删除新分配用户提醒
+	public function delNewCustomer()
+	{
+		$id = I('post.id', 1, FILTER_VALIDATE_INT);
+		$data['customer_employee_id'] = $id;
+		$model = new OcModel('customer_employee');
+		$model->startTrans();
+		
+		try {
+			$ret = $model->save($data);
+			if (false === $ret) {
+				\Think\Log::write("更新数据失败：" . $this->model->getDbError());
+				$this->ajaxReturn(['status' => 'failed', 'message' => '更新数据失败']);
+			}
+			$model->commit();
+		} catch (Exception $ex) {
+			$this->ajaxReturn(['status' => 'failed', 'message' => $ex->getMessage()]);
+		}
+		$this->ajaxReturn(['status' => 'success']);
 	}
 	
 	//获得总经理的部门id
@@ -409,6 +442,7 @@ class IndexController extends Controller
 		$ret = M('customer_liaison')->where($where)->count();
 		return [$res, $ret];
 	}
+	
 	private function login()
 	{
 		$where['login_time'] = [['egt', date('Y-m-d')], ['lt', date('Y-m-d', strtotime('+1 day'))]];
@@ -460,7 +494,7 @@ class IndexController extends Controller
 				'context' => ['type' => 'string',],
 				'department_id' => ['type' => 'array', 'value' => [
 					'type' => 'integer',
-        		 ],],
+				],],
 			
 			]);
 		} catch (\Exception $ex) {
@@ -474,9 +508,10 @@ class IndexController extends Controller
 	//
 	private function getNoticeDepartment()
 	{
-		$where['department_type_id']=['in',['information','business']];
-		$where['_string']='delete_time is null';
-		$res=M('department')->field('department_id,name')->where($where)->select();
+		$where['department_type_id'] = ['in', ['information', 'business']];
+		$where['_string'] = 'delete_time is null';
+		$res = M('department')->field('department_id,name')->where($where)->select();
 		return $res;
 	}
+	
 }

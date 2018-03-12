@@ -140,14 +140,14 @@
                 <tbody>
                 <volist name="data" id="item">
                     <tr class="text-l">
-                        <td>{$item.customer_name}</td>
+                        <td><a target="_blank" href="/service/customer/search/detail?customer_id={$item.customer_id}">{$item.customer_name}</a></td>
                         <td>{$item.project_name}</td>
                         <td>
                             <php>echo (1==$item['light_proj']?'是':'否');</php>
                         </td>
                         <td>{$item.proj_type}</td>
                         <td>{$item.begin_date} ~ {$item.end_date}</td>
-                        <td>{$item.scale_fee}</td>
+                        <td><gt name="item.scale_fee" value="0">{$item.scale_fee}</gt></td>
                         <td>{$item.fee_type}</td>
                         <td>{$item.is_ticket}</td>
                         <td>
@@ -173,7 +173,7 @@
                                             class="c-666">灯会期间门票：</strong>{$item.run_ticket|default=''}</li>
                                 <li class="more-line"><strong
                                             class="c-666">灯会期间客流：</strong>{$item.run_passenger|default=''}</li>
-                                <li class="more-line"><strong class="c-666">收益情况：</strong>{$item.out_value|default=''}
+                                <li class="more-line"><strong class="c-666">收益情况：</strong><gt name="item.out_value" value="0">{$item.out_value|default=''}</gt>
                                 </li>
                                 <li class="more-line"><strong class="c-666">运营方案：</strong>{$item.programme|default=''}
                                 </li>

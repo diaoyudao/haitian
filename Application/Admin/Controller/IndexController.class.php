@@ -25,6 +25,17 @@ class IndexController extends Controller
 		$config = $this->getConfig();
 		$common_where = $this->getDepartmentWhere();
 		$wait = [];
+		//新分配客户
+		$new_cust_where['employee_id'] = session('employee_id');
+		$next_day = date("Y-m-d", strtotime("+1 day"));
+		$new_cust_where['_string'] = "((aa.update_time is null) or (aa.update_time < '" . $next_day . "')) and aa.delete_time is null";
+		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d')];
+		$field = 'aa.*,(select name from customer where customer_id=aa.customer_id and delete_time is null) customer_name';
+		$new_cust = M('customer_employee')->alias('aa')->field($field)->where($new_cust_where)->select();
+		foreach ($new_cust as &$item) {
+			$item['type'] = 'cust';
+		}
+		
 		if (session('employee')['role_type_code'] == 'boss') {
 			if (session('employee_id') != 1000) {
 				$project_where['approve'] = ['in', [1, 2, 3]];
@@ -78,7 +89,7 @@ class IndexController extends Controller
 			foreach ($task as &$val) {
 				$val['type'] = 'task';
 			}
-			$wait = array_merge($project, $liaison, $contact, $task);
+			$wait = array_merge($project, $liaison, $contact, $task, $new_cust);
 			
 		}
 //		dump(M()->_sql());
@@ -87,8 +98,8 @@ class IndexController extends Controller
 			$this->ajaxReturn(['status' => 'success', 'wait' => $wait, 'count' => $count]);
 		}
 		$this->assign('wait', $wait);
+		$this->assign('task', $task);
 		$this->assign('count', $count);
-
 //		dump($contact_where);
 //		dump($contact);
 //		dump($task);

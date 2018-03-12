@@ -359,13 +359,20 @@
                                     <a onclick="showTask('任务','/service/task/manage/change?task_id={$wt.task_id}')">新任务需要完成：{$wt.context}</a>
                                 </case>
                                 <case value="liaison">
-                                    <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}的项目：{$wt.project_name}需要跟进，点击查看</a>
+                                    <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}
+                                        的项目：{$wt.project_name}需要跟进，点击查看</a>
                                 </case>
                                 <case value="contact">
-                                    <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}的联系人：{$wt.name}生日，联系客户送上祝福，点击查看</a>
+                                    <a href="/service/customer/search/detail?customer_id={$wt.customer_id}">客户：{$wt.customer_name}
+                                        的联系人：{$wt.name}生日，联系客户送上祝福，点击查看</a>
+                                </case>
+                                <case value="cust">
+                                    <a onclick="delCust({$wt.customer_employee_id},{$wt.customer_id})" href="">新客户{$wt.customer_name}
+                                        ，点击查看</a>
                                 </case>
                                 <default/>
-                                <a href="/service/project/manage/approve?type={$wt.approve}">项目：{$wt.name}需要{$arr[$wt[approve_status]]}</a>
+                                <a href="/service/project/manage/approve?type={$wt.approve}">项目：{$wt.name}
+                                    需要{$arr[$wt[approve_status]]}</a>
                             </switch>
 
                         </li>
@@ -593,7 +600,7 @@
 				var $li = $('.date_body').find('li');
 				$li.each(function (i, el) {
 					if ($(el).text() == days) {
-						console.log($(el).text(),days)
+						console.log($(el).text(), days)
 						var day;
 						var year = $('#year').text();
 						var month = ($('#month').text() > 9) ? $('#month').text() : ('0' + $('#month').text());
@@ -602,7 +609,7 @@
 						} else {
 							day = year + '-' + month + '-' + days;
 						}
-						$(el).append('<img src="/public/img/home/xlcweb/u410.png" onclick="remind(\''+day+'\')"/>');
+						$(el).append('<img src="/public/img/home/xlcweb/u410.png" onclick="remind(\'' + day + '\')"/>');
 					}
 				})
 			}
@@ -640,8 +647,28 @@
 				content: url,
 			});
 		}
-		function showTask(title,url) {
-            layer_show(title,url,750,750)
+
+		function showTask(title, url) {
+			layer_show(title, url, 750, 750)
+		}
+
+
+		function delCust(ce_id,id) {
+			var url = '/service/home/index/delnewcustomer';
+            var param={
+                id:ce_id,
+            }
+			K.doAjax(param, url, function (res) {
+				if (res.status && res.status == 'success') {
+					window.location.replace('/service/customer/search/detail?customer_id='+id);
+				} else {
+					if (res.message) {
+						layer.msg(res.message, {icon: 2, time: 2000});
+					} else {
+						layer.msg('后台错误!', {icon: 2, time: 2000});
+					}
+				}
+			});
 		}
     </script>
 

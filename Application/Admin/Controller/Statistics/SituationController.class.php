@@ -281,7 +281,7 @@ class SituationController extends Controller
 		
 		$file_name = c('PROJECT_FILE_PREFIX') . date('Y-m-d-His') . '.csv';
 		
-		$field = "(select province_name from province where province_id=bb.province_id limit 1) prov_name,if('1'=pj.light_proj,'是','否') is_light,bb.name cust_name,pj.name,(select name from model_config where model_config_id=pj.proj_type) proj_type,begin_date,end_date,scale_fee,(select name from config_auto where config_auto_id=pj.fee_type) fee_type,if('1'=is_ticket,'是','否') is_ticket,if('本公司'=company,company,other_company) company,concat(level,'级') level,pj.address,ticket,traffic,peace_passenger,relation,ability,run_ticket,run_passenger,income,programme,report,context";
+		$field = "(select province_name from province where province_id=bb.province_id limit 1) prov_name,if('1'=pj.light_proj,'是','否') is_light,bb.name cust_name,pj.name,pj.project_id,(select name from model_config where model_config_id=pj.proj_type) proj_type,begin_date,end_date,scale_fee,(select name from config_auto where config_auto_id=pj.fee_type) fee_type,if('1'=is_ticket,'是','否') is_ticket,if('本公司'=company,company,other_company) company,concat(level,'级') level,pj.address,ticket,traffic,peace_passenger,relation,ability,run_ticket,run_passenger,out_value,programme,report,context";
 		
 		// $field = "aa.light_proj,bb.name customer_name,aa.name project_name,aa.proj_type,bb.business_id, scale_fee,aa.customer_id,aa.project_id,aa.son_status,"
 		//     . "aa.begin_date,aa.end_date,(select name from config_auto where config_auto_id=aa.fee_type) fee_type,bb.business_id,"
@@ -290,6 +290,15 @@ class SituationController extends Controller
 		
 		$where['_string'] = 'pj.delete_time is null';
 		$where['is_show_situation'] = 1;
+		if (!empty(I('post.begin_time')) && empty(I('post.end_time'))) {
+			$where['pj.begin_date'] = ['egt', I('post.begin_time')];
+		}
+		if (!empty(I('post.end_time')) && empty($this->param['begin_time'])) {
+			$where['pj.begin_date'] = ['elt', I('post.end_time')];
+		}
+		if (!empty(I('post.begin_time')) && !empty(I('post.end_time'))) {
+			$where['pj.begin_date'] = [['egt', I('post.begin_time')], ['elt', I('post.end_time')]];
+		}
 		$result = M('project')->where($where)->field($field)->alias('pj')
 			->join('project_attr ar on ar.project_id=pj.project_id')
 			->join('customer bb on pj.customer_id=bb.customer_id and bb.delete_time is null')
@@ -314,7 +323,7 @@ class SituationController extends Controller
 			$str .= ',"' . $v['company'] . '",' . $v['level'] . ',' . $v['address'];
 			$str .= ',' . $v['ticket'] . ',"' . $v['traffic'] . '",' . $v['peace_passenger'];
 			$str .= ',"' . $v['relation'] . '",' . $v['ability'] . ',"' . $v['context'];
-			$str .= '",' . $v['run_ticket'] . ',' . $v['run_passenger'] . ',' . $v['income'];
+			$str .= '",' . $v['run_ticket'] . ',' . $v['run_passenger'] . ',' . $v['out_value'];
 			$str .= ',"' . $v['programme'] . '","' . $v['report'] . '"' . "\n";
 			
 			
@@ -329,6 +338,25 @@ class SituationController extends Controller
 		}
 		
 		fclose($wh);
+
+		if ('0' === I('post.is_show_situation')) {
+
+			$model = new OcModel('project');
+			$model->startTrans();
+			try {
+				foreach ($result as $item) {
+					$ret = $model->where(['project_id'=>$item['project_id']])->setField('is_show_situation', 0);
+					if (false === $ret) {
+						E('db err:' . $model->getDbError());
+					}
+				}
+				
+				$model->commit();
+			} catch (\Exception $ex) {
+				$model->rollback();
+				$this->ajaxReturn(['status' => 'failed', 'message' => '后台处理失败.！' . $ex->getMessage()]);
+			}
+		}
 		
 		return [c('PROJECT_COPY_PATH_S') . $month, $file_name];
 	}
@@ -390,12 +418,16 @@ class SituationController extends Controller
 		if (!empty($this->param['is_ticket']) || '0' === $this->param['is_ticket'] ?? null) {
 			$this->where['ar.is_ticket'] = $this->param['is_ticket'];
 		}
-		if (!empty($this->param['begin_time'])) {
+		if (!empty($this->param['begin_time']) && empty($this->param['end_time'])) {
 			$this->where['aa.begin_date'] = ['egt', $this->param['begin_time']];
 		}
-		if (!empty($this->param['end_time'])) {
-			$this->where['aa.end_date'] = ['elt', $this->param['end_time']];
+		if (!empty($this->param['end_time']) && empty($this->param['begin_time'])) {
+			$this->where['aa.begin_date'] = ['elt', $this->param['end_time']];
 		}
+		if (!empty($this->param['begin_time']) && !empty($this->param['end_time'])) {
+			$this->where['aa.begin_date'] = [['egt', $this->param['begin_time']], ['elt', $this->param['end_time']]];
+		}
+		
 		if (!empty($this->param['company'])) {
 			if ($this->param['company'] == '本公司') {
 				$this->where['aa.company'] = $this->param['company'];
