@@ -27,9 +27,11 @@ class IndexController extends Controller
 		$wait = [];
 		//新分配客户
 		$new_cust_where['employee_id'] = session('employee_id');
-		$next_day = date("Y-m-d", strtotime("+1 day"));
-		$new_cust_where['_string'] = "((aa.update_time is null) or (aa.update_time < '" . $next_day . "')) and aa.delete_time is null";
-		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d')];
+//		$next_day = date("Y-m-d", strtotime("+1 day"));
+//		$new_cust_where['_string'] = "((aa.update_time is null) or (aa.update_time < '" . $next_day . "')) and aa.delete_time is null";
+//		$new_cust_where['_string'] = "aa.update_time is null and aa.delete_time is null";
+		$new_cust_where['_string'] = "aa.update_time is not null and aa.delete_time is null";
+//		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d')];
 		$field = 'aa.*,(select name from customer where customer_id=aa.customer_id and delete_time is null) customer_name';
 		$new_cust = M('customer_employee')->alias('aa')->field($field)->where($new_cust_where)->select();
 		foreach ($new_cust as &$item) {
@@ -89,8 +91,18 @@ class IndexController extends Controller
 			foreach ($task as &$val) {
 				$val['type'] = 'task';
 			}
-			$wait = array_merge($project, $liaison, $contact, $task, $new_cust);
-			
+			// 审核、审批未通过
+			$approve_where['pa.create_time'] = ['egt', date('Y-m-d', strtotime("-30 day"))];
+			$approve_where['pa.status'] = ['in', [2, 3]];
+			$approve_where['pa.is_pass'] = 0;
+			$approve_where['pa.employee_id'] = session('employee_id');
+			$approve_where['_string'] = 'pa.update_time is  null and pa.delete_time is null';
+			$approve_field = 'pa.*,(select customer_id from project where project_id=pa.project_id and delete_time is null) customer_id,(select name from project where project_id=pa.project_id and delete_time is null) name';
+			$approve = M('project_approve')->alias('pa')->field($approve_field)->where($approve_where)->select();
+			foreach ($approve as &$value) {
+				$value['type'] = 'approve';
+			}
+			$wait = array_merge($project, $liaison, $contact, $task, $new_cust, $approve);
 		}
 //		dump(M()->_sql());
 		$count = count($wait);

@@ -367,8 +367,11 @@
                                         的联系人：{$wt.name}生日，联系客户送上祝福，点击查看</a>
                                 </case>
                                 <case value="cust">
-                                    <a onclick="delCust({$wt.customer_employee_id},{$wt.customer_id})" href="">新客户{$wt.customer_name}
+                                    <a onclick="delCust({$wt.customer_employee_id},{$wt.customer_id})" >新客户{$wt.customer_name}
                                         ，点击查看</a>
+                                </case>
+                                <case value="approve">
+                                    <a onclick="delApprove({$wt.project_approve_id},{$wt.customer_id})">项目-{$wt.name}{$arr[$wt[status]-1]}未通过&nbsp;&nbsp;{$wt.reply}</a>
                                 </case>
                                 <default/>
                                 <a href="/service/project/manage/approve?type={$wt.approve}">项目：{$wt.name}
@@ -658,6 +661,23 @@
             var param={
                 id:ce_id,
             }
+			K.doAjax(param, url, function (res) {
+				if (res.status && res.status == 'success') {
+					window.location.replace('/service/customer/search/detail?customer_id='+id);
+				} else {
+					if (res.message) {
+						layer.msg(res.message, {icon: 2, time: 2000});
+					} else {
+						layer.msg('后台错误!', {icon: 2, time: 2000});
+					}
+				}
+			});
+		}
+		function delApprove(pa_id,id) {
+			var url = '/service/home/index/delapprove';
+			var param={
+				id:pa_id,
+			}
 			K.doAjax(param, url, function (res) {
 				if (res.status && res.status == 'success') {
 					window.location.replace('/service/customer/search/detail?customer_id='+id);

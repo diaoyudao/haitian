@@ -83,6 +83,11 @@ class EmployeeController extends Controller
 
 			$employee['role_type_code'] = 'boss';
 			$employee['department_type_id'] = 'boss';
+		}else{
+			$is_login=$this->isOtherLogin($employee);
+			if($is_login){
+				$this->ajaxReturn(['status' => 'failed','message'=>'您的账户已经登录了，不能重复登录!']);
+			}
 		}
 
 		(new \Admin\Common\Session())->loginStart($employee);
@@ -93,6 +98,7 @@ class EmployeeController extends Controller
 			->getField('login_time');
 			
 		$data_l['login_status'] = 1;
+		$data_l['is_login'] = 1;
 		$data_l['login_time'] = date('Y-m-d H:i:s');
 		if($last_login_t < date('Y-m-d')) {
 			$data_l['login_quantity'] = 1;
@@ -115,6 +121,18 @@ class EmployeeController extends Controller
 		$verify = new \Think\Verify($config);
 
 		return $verify->check($code, C('VERIFY_ID'));
+	}
+	
+	private function isOtherLogin($employee)
+	{
+		if($employee['is_login'] == 0){
+			return false;
+		}
+		$login_time = $employee['login_time'];
+		if (date('Y-m-d H:i:s', time()-C('SESSION_OPTIONS.expire')) >= $login_time) {
+			return false;
+		}
+		return true;
 	}
 
 	private function checkParameter()

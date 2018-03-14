@@ -95,9 +95,9 @@ class IndexController extends Controller
 		$wait = [];
 		//新分配客户
 		$new_cust_where['employee_id'] = session('employee_id');
-		$next_day = date("Y-m-d", strtotime("+1 day"));
-		$new_cust_where['_string'] = "((aa.update_time is null) or (aa.update_time < '" . $next_day . "')) and aa.delete_time is null";
-		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d')];
+//		$next_day = date("Y-m-d", strtotime("+1 day"));
+		$new_cust_where['_string'] = "aa.update_time is not null and aa.delete_time is null";
+//		$new_cust_where['aa.create_time'] = ['egt', date('Y-m-d',strtotime("-6 day"))];
 		$field = 'aa.*,(select name from customer where customer_id=aa.customer_id and delete_time is null) customer_name';
 		$new_cust = M('customer_employee')->alias('aa')->field($field)->where($new_cust_where)->select();
 		foreach ($new_cust as &$item) {
@@ -157,7 +157,19 @@ class IndexController extends Controller
 			foreach ($task as &$val) {
 				$val['type'] = 'task';
 			}
-			$wait = array_merge($project, $liaison, $contact, $task, $new_cust);
+			// 审核、审批未通过
+			
+			$approve_where['pa.create_time'] = ['egt', date('Y-m-d', strtotime("-30 day"))];
+			$approve_where['pa.status'] = ['in', [2, 3]];
+			$approve_where['pa.is_pass'] = 0;
+			$approve_where['pa.employee_id'] = session('employee_id');
+			$approve_where['_string'] = 'pa.update_time is  null and pa.delete_time is null';
+			$approve_field = 'pa.*,(select customer_id from project where project_id=pa.project_id and delete_time is null) customer_id,(select name from project where project_id=pa.project_id and delete_time is null) name';
+			$approve = M('project_approve')->alias('pa')->field($approve_field)->where($approve_where)->select();
+			foreach ($approve as &$value) {
+				$value['type'] = 'approve';
+			}
+			$wait = array_merge($project, $liaison, $contact, $task, $new_cust, $approve);
 			
 		}
 //		dump(M()->_sql());
@@ -365,7 +377,30 @@ class IndexController extends Controller
 	{
 		$id = I('post.id', 1, FILTER_VALIDATE_INT);
 		$data['customer_employee_id'] = $id;
-		$model = new OcModel('customer_employee');
+		$data['update_time'] = null;
+		$model = M('customer_employee');
+		$model->startTrans();
+		
+		try {
+			$ret = $model->save($data);
+			if (false === $ret) {
+				\Think\Log::write("更新数据失败：" . $this->model->getDbError());
+				$this->ajaxReturn(['status' => 'failed', 'message' => '更新数据失败']);
+			}
+			$model->commit();
+		} catch (Exception $ex) {
+			$this->ajaxReturn(['status' => 'failed', 'message' => $ex->getMessage()]);
+		}
+		$this->ajaxReturn(['status' => 'success']);
+	}
+	
+	//删除审核、审批未通过提醒
+	public function delApprove()
+	{
+		$id = I('post.id', 1, FILTER_VALIDATE_INT);
+		$data['project_approve_id'] = $id;
+		$data['update_time'] = date('Y-m-d H:i:s');
+		$model = M('project_approve');
 		$model->startTrans();
 		
 		try {
@@ -455,7 +490,7 @@ class IndexController extends Controller
 	private function unfinishedTask()
 	{
 		$where['end_date'] = [['egt', date('Y-m-d')]];
-		$where['-string'] = 'delete_time is null';
+		$where['_string'] = 'delete_time is null';
 		$res = M('task')->where($where)->count();
 		return $res;
 	}

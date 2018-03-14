@@ -64,7 +64,7 @@ class PreprocessBehavior extends \Think\Behavior
 
     private function privilege()
     {
-        if('Login/employee' == CONTROLLER_NAME || 'Verify/login' == CONTROLLER_NAME) {
+        if('Login/employee' == CONTROLLER_NAME || 'Verify/login' == CONTROLLER_NAME || 'Test/test' == CONTROLLER_NAME) {
             return true;
         }
 

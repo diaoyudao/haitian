@@ -373,7 +373,7 @@
 
 		function LsgLayerShow(title, url, w, h, y) {
 			$(".screen_popup").hide();
-            layer_show(title,url,w,h)
+			layer_show(title,url,w,h)
 
 			// layer.open({
 			// 	type: 2,
@@ -392,7 +392,7 @@
 			$('#context-list').empty()
 			var role = '{$Think.session.employee.role_type_code}';
 			var tit = 'boss' == role ? '审批' : '审核';
-            console.log(tit)
+
 			$.each($datas, function (i, v) {
 				var type_img = (1 == v.type ? 'gov_icon.png' : (2 == v.type ? 'ScenicSpot_icon.png' : (3 == v.type ? 'enterprise.png' : ((4 == v.type ? 'overseas.png' : (5 == v.type ? 'enterprise.png' : 'other.png'))))));
 
