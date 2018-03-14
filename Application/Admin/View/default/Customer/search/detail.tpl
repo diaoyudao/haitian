@@ -157,7 +157,7 @@
 									<p <eq name="item2.is_important" value="1">style="color: red;"</eq>>
 										<notempty name="item2.name">{$item2.name}<else/>未知</notempty><notempty name="item2.position">，{$item2.position}</notempty><notempty name="item2.function">，<php>echo C('CONTACT_FUNCTION')[$item2['function']];</php></notempty><if condition="'0' == $item2['status']">（已离职）</if>
 									</p>
-									<span><notempty name="item2.phone"><php>$temp_phone=str_replace(',' ,'<br>' ,$item2['phone']);echo $temp_phone;</php><br><notempty name="item2.tel"><php>$temp_tel=str_replace(',', '<br>',$item2['tel']);echo $temp_tel;</php><else/>电话未知</notempty></notempty></span>
+									<span><notempty name="item2.phone"><php>$temp_phone=str_replace(',' ,'<br>' ,$item2['phone']);echo $temp_phone;</php><br></notempty><notempty name="item2.tel"><php>$temp_tel=str_replace(',', '<br>',$item2['tel']);echo $temp_tel;</php><else/>电话未知</notempty></span>
 										<span><img src="/public/img/test/u9008.png" alt="" onclick="LsgLayerShow('联系人名片','/service/customer/search/addcard?contact_id={$item2.customer_contact_id}', 620, 620,200)"></span>
 
 								</div>
