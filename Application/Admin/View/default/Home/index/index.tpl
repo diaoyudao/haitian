@@ -573,7 +573,8 @@
 				if (response.status && 'success' == response.status) {
 					var str = '<div id="remind"><ul class="dayremind">';
 					$.each(response.list, function (i, v) {
-						str += '<li><p>' + v.customer_name + '</p><p>' + v.project_name + '</p>';
+						str += '<li><p style="margin: 0;">' + v.customer_name + '</p></li>'
+//                            <p>' + v.project_name + '</p>';
 					});
 					str += '</ul></div>';
 
@@ -584,7 +585,7 @@
 						shadeClose: true,
 						content: str
 					});
-//						console.log(response)
+						console.log(response)
 				} else {
 					if (response.message) {
 						layer.msg(response.message, {icon: 2, time: 1500})
