@@ -1184,10 +1184,26 @@ class ManageController extends Controller
 		$this->ajaxReturn(['status' => 'success']);
 	}
 	
-	private function getProvince($province_id = null)
+//	private function getProvince($province_id = null)
+//	{
+//		$where['_string'] = 'delete_time is null';
+//		$result = M('province')->where($where)->order('province_id')->select();
+//		$this->assign('province', $result);
+//		if ($province_id) {
+//			$where['province_id'] = $province_id;
+//			$city = M('city')->order('city_id')->where($where)->select();
+//			$this->assign('city', $city);
+//		}
+//	}
+	//根据客户数量显示省份
+	public function getProvince($province_id = null)
 	{
-		$where['_string'] = 'delete_time is null';
-		$result = M('province')->where($where)->order('province_id')->select();
+		$field = 'aa.*,(select count(*) num from customer cu where '
+			. $this->whereEmployee() . ' province_id=aa.province_id and delete_time is null) num';
+		
+		$result = M('province')->alias('aa')->where('delete_time is null')
+			->field($field)->order('province_id')->select();
+		array_multisort(array_column($result, 'num'), SORT_NUMERIC, SORT_DESC, $result);
 		$this->assign('province', $result);
 		if ($province_id) {
 			$where['province_id'] = $province_id;

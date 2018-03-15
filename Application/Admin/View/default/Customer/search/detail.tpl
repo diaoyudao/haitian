@@ -218,13 +218,13 @@
 							<table class="records_table bottom_table">
 								<thead>
 									<tr>
-										<th>序号</th>
-										<th>联络时间</th>
-										<th>联络客户</th>
-										<th>相关事宜</th>
+										<th width="30">序号</th>
+										<th width="60">联络时间</th>
+										<th width="60">联络客户</th>
+										<th width="100">相关事宜</th>
 										<th>联络内容</th>
-										<th>负责人</th>
-										<th></th>
+										<th width="60">负责人</th>
+										<th width="30"></th>
 									</tr>
 								</thead>
 								<tbody id="liaison-list">

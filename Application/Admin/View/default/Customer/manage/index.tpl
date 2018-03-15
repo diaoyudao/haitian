@@ -146,7 +146,7 @@ function refureshSwiper() {
 
 		$(me).parent('div').remove();	
 
-		refureshSwiper()	
+//		refureshSwiper()
 	}
 
 	function addTab(id,name,is_vip) {

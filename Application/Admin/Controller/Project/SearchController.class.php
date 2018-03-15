@@ -50,7 +50,7 @@ class SearchController extends Controller
             $field = "aa.*,bb.name operator_name,bb.thumbnail_url,(select name from department where department_id=aa.out_department_id) out_department_name"
                 . ",(select name from department where department_id=aa.in_department_id) in_department_name";
             $approve = M('project_approve')->alias('aa')->where($where_t)
-                ->join('employee bb on aa.employee_id=bb.employee_id')
+                ->join('employee bb on aa.operator=bb.employee_id')
                 ->field($field)->order('project_id,aa.status,create_time')->select();
 
             // 组装审批流程
@@ -64,7 +64,7 @@ class SearchController extends Controller
                 $item['status_name'] = C('SON_STATUS_LIST')[$item['son_status']];
             }
         }        
-
+		
         $this->ajaxReturn(['status' => 'success', 'data' => $result
             , 'total_page' => $page->totalPages]);
     }
