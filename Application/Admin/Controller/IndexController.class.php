@@ -95,7 +95,7 @@ class IndexController extends Controller
 			$approve_where['pa.create_time'] = ['egt', date('Y-m-d', strtotime("-30 day"))];
 			$approve_where['pa.status'] = ['in', [2, 3]];
 			$approve_where['pa.is_pass'] = 0;
-			$approve_where['pa.employee_id'] = session('employee_id');
+			$approve_where['pa.start_employee'] = session('employee_id');
 			$approve_where['_string'] = 'pa.update_time is  null and pa.delete_time is null';
 			$approve_field = 'pa.*,(select customer_id from project where project_id=pa.project_id and delete_time is null) customer_id,(select name from project where project_id=pa.project_id and delete_time is null) name';
 			$approve = M('project_approve')->alias('pa')->field($approve_field)->where($approve_where)->select();

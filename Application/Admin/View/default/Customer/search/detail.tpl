@@ -218,13 +218,13 @@
 							<table class="records_table bottom_table">
 								<thead>
 									<tr>
-										<th width="30">序号</th>
-										<th width="60">联络时间</th>
-										<th width="60">联络客户</th>
-										<th width="100">相关事宜</th>
-										<th>联络内容</th>
-										<th width="60">负责人</th>
-										<th width="30"></th>
+										<th width="10">序号</th>
+										<th>联络时间</th>
+										<th>联络客户</th>
+										<th>相关事宜</th>
+										<th style="min-width: 200px;">联络内容</th>
+										<th>负责人</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="liaison-list">
@@ -494,11 +494,13 @@ function showLiaisonList(res) {
 		str += '<td>'+ (i+1) +'</td>';
 		str += '<td>'+ (v.liaison_time) +'</td>';
 		if(v.contact_name)
-			str += '<td><img class="head" src="'+v.contact_url+'" alt="">'+v.contact_name+'，'+v.contact_department+'</td>';
+//			str += '<td><img class="head" src="'+v.contact_url+'" alt="">'+v.contact_name+'，'+v.contact_department+'</td>';
+			str += '<td>'+v.contact_name+','+v.contact_department+'</td>';
 		else str += '<td></td>';
 		str += '<td>'+ (v.outline?v.outline:'') +'</td>';
 		str += '<td><p>'+ ((1 == v.important)? ('<img src="/public/img/test/u8862.png" alt="">') :'')+ (v.context?v.context:"") +'</p>'+(v.reply?('<p class="reply">批复：'+v.reply+'</p>'):'')+'</td>';
-		str += '<td><img class="head" src="'+v.employee_url+'" alt="">'+v.employee_name+'</td>';
+//		str += '<td><img class="head" src="'+v.employee_url+'" alt="">'+v.employee_name+'</td>';
+		str += '<td>'+v.employee_name+'</td>';
 
 		str += '<td><span class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="LsgLayerShow(\'联络记录\',\'/service/customer/search/addliaison?liaison_id='+v.customer_liaison_id+'\', 800, 820,400)"></span><i onclick="delList(\'delliaison\','+v.customer_liaison_id+')" class="Hui-iconfont ml-10" style="font-size:16px;">&#xe6e2;</i></td></tr>';		
 

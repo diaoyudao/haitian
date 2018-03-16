@@ -527,7 +527,8 @@ class ManageController extends Controller
 
             $data['status'] = $data_status['approve_status'];            
             $data['approve'] = $approve['approve'];
-            $data['employee_id'] = $approve['employee_id'];
+            $data['start_employee'] = $approve['employee_id'];
+            $data['employee_id'] = session('employee_id');
 
             $data['is_over'] = (isset($this->param['is_pass']) 
                 && 0 == $this->param['is_pass']) ? 1: 0;  // 审批不通过关闭流程
