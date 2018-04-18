@@ -159,7 +159,7 @@
 									</p>
 									<span><notempty name="item2.phone"><php>$temp_phone=str_replace(',' ,'<br>' ,$item2['phone']);echo $temp_phone;</php><br></notempty><notempty name="item2.tel"><php>$temp_tel=str_replace(',', '<br>',$item2['tel']);echo $temp_tel;</php><else/>电话未知</notempty></span>
 										<span><img src="/public/img/test/u9008.png" alt="" onclick="LsgLayerShow('联系人名片','/service/customer/search/addcard?contact_id={$item2.customer_contact_id}', 620, 620,200)"></span>
-
+																<br>
 								</div>
 							</div>
 						</volist>

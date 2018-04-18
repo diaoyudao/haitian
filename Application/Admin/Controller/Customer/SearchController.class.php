@@ -326,7 +326,7 @@ class SearchController extends Controller
 			->alias('aa')->field($field)->select();
 		
 		foreach ($result as &$item) {
-			if('本公司' == $item['company']) {
+			if('待定' != $item['company']) {
                 $item['status_name'] = C('SON_STATUS_LIST')[$item['son_status']];
             } else {
                 $item['status_name'] = $item['other_status'];
@@ -346,10 +346,13 @@ class SearchController extends Controller
 		$where['_string'] = 'aa.delete_time is null';
 		// 本部门
 		$where_emp['_string'] = 'delete_time is null';
-		$where_emp['department_id'] = session('employee.department_id');
-		$employee_arr = M('employee')->where($where_emp)->getField('employee_id', true);
-		$where['aa.employee_id'] = ['in', $employee_arr];
 		
+		$where_emp['department_id'] = session('employee.department_id');
+		
+		$employee_arr = M('employee')->where($where_emp)->getField('employee_id', true);
+		if(session('employee.department_type_id') == 'information'){
+			$where['aa.employee_id'] = ['in', $employee_arr];
+		}
 		$model = M('customer_liaison');
 		
 		$counts = $model->where($where)->alias('aa')
@@ -538,8 +541,9 @@ class SearchController extends Controller
 		$result = M('city')->where($where)->field($field)
 			->alias('aa')->order('city_id')->select();
 		// sort
-		array_multisort(array_column($result, 'num'), SORT_NUMERIC, SORT_DESC, $result);
-		
+		if(isset($this->param['list_type']) && 0 == $this->param['list_type']) {
+			array_multisort(array_column($result, 'num'), SORT_NUMERIC, SORT_DESC, $result);
+		}
 		// 获取该省级客户
 		$prov_cust = null;
 		if (empty($this->where['_string']))
@@ -629,8 +633,9 @@ class SearchController extends Controller
 		$result = M('county')->where($where)->field($field)
 			->alias('aa')->order('county_id')->select();
 		// sort
-		array_multisort(array_column($result, 'num'), SORT_NUMERIC, SORT_DESC, $result);
-		
+		if(isset($this->param['list_type']) && 0 == $this->param['list_type']) {
+			array_multisort(array_column($result, 'num'), SORT_NUMERIC, SORT_DESC, $result);
+		}
 		// 获取该市级客户
 		$prov_cust = null;
 		
@@ -804,18 +809,20 @@ class SearchController extends Controller
 	private function whereEmployee()
 	{
 		$ret = 'true ';
-		if ('salesman' == session('employee.role_type_code')) {
+		if ('salesman' == session('employee.role_type_code') && 'information' == session('employee.department_type_id')) {
 			$this->where['_string'] = ' exists(select 1 from customer_employee ce where ce.customer_id=cu.customer_id and ce.delete_time is null  and ce.employee_id=' . session('employee_id') . ')';
-			
+
 			$ret .= " and exists(select 1 from customer_employee ce where ce.customer_id=cu.customer_id and ce.delete_time is null  and ce.employee_id=" . session('employee_id') . ") ";
-		} else
-			// 信息部和业务部特殊处理
+		}
+// else
+//			// 信息部和业务部特殊处理
 			if ('information' == session('employee.department_type_id')) {
 				$this->where['information_id'] = session('employee.department_id');
 				$ret .= "and information_id='" . session('employee.department_id') . "'";
+			
 			} else if ('business' == session('employee.department_type_id')) {
-				$this->where['business_id'] = session('employee.department_id');
-				$ret .= "and business_id='" . session('employee.department_id') . "'";
+//				$this->where['business_id'] = session('employee.department_id');
+//				$ret .= "and business_id='" . session('employee.department_id') . "'";
 			}
 		
 		return $ret . " and ";

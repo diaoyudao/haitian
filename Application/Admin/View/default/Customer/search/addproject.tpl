@@ -215,7 +215,13 @@
                             />春节 </label>
                     </div>
                 </div>
-
+                <div class="line-block ml-15 " style="margin-top: 0;vertical-align: top">
+                    <p class="title">展出年份</p>
+                    <p class="content">
+                        <input type="text" name="year" value="{$project.year}" id="d-year"
+                               placeholder="展出年份" class="input-text" style="width:82px;height:37px"/>
+                    </p>
+                </div>
                 <div class="line-block  ml-15">
                     <p class="title">是否售票</p>
                     <div class="content">
@@ -306,12 +312,18 @@
                     <p class="title">制作公司</p>
                     <div class="content">
                         <select class="screen_department item-w" name="company">
-                            <option value="本公司"
-                            <if condition="'本公司' == $project['company']">selected</if>
-                            >本公司</option>
                             <option value="三方公司"
                             <if condition="'三方公司' == $project['company']">selected</if>
                             >三方公司</option>
+
+                            <option value="待定"
+                            <if condition="'待定' == $project['company']">selected</if>
+                            >待定</option>
+
+                             <option value="本公司"
+                            <if condition="'本公司' == $project['company']">selected</if>
+                            >本公司</option>
+
                         </select>
                     </div>
                 </div>
@@ -555,17 +567,6 @@
     <script type="text/javascript" src="/public/huiadmin/lib/laydate/laydate.js"></script>
     <script>
 		$(function () {
-			$('.form_date').datetimepicker({
-				language: 'zh-CN',
-				weekStart: 1,
-				todayBtn: 1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 2,
-				minView: 2,
-				forceParse: 0,
-				format: 'yyyy-mm-dd',
-			});
 
 			laydate.render({
 				elem: '#d-begin-date' //指定元素
@@ -573,6 +574,35 @@
 			laydate.render({
 				elem: '#d-end-date' //指定元素
 			});
+
+			laydate.render({
+				elem: '#d-year'
+				,type: 'year'
+			});
+			var project_company = '{$project.company}';
+			if ('' == project_company) {
+				project_company = '三方公司';
+			}
+
+			if ("三方公司" == project_company) {
+//				$('select[name=status]').hide()
+//				$('input[name=other_status]').show()
+				$('select[name=status]').show()
+				$('input[name=other_status]').hide()
+//				$('.cooperation_btn1').hide()
+				$('#other_company').show()
+				$('.cooperation_btn1').show()
+			}else if("待定" == project_company){
+				$('select[name=status]').hide()
+				$('input[name=other_status]').show()
+				$('.cooperation_btn1').hide()
+				$('#other_company').hide()
+			} else {
+				$('input[name=other_status]').hide()
+				$('select[name=status]').show()
+				$('.cooperation_btn1').show()
+				$('#other_company').hide()
+			}
 
 			// 改变制作公司
 			$('select[name=company]').change(function () {
@@ -585,10 +615,17 @@
 					$('#opponent').hide();
 					$("#opponent table").empty();
 
-				} else {
+				}else if("待定" == v){
 					$('select[name=status]').hide()
 					$('input[name=other_status]').show()
 					$('.cooperation_btn1').hide()
+					$('#other_company').hide()
+				}else {
+//					$('select[name=status]').hide()
+					$('input[name=other_status]').hide()
+					$('select[name=status]').show()
+					$('.cooperation_btn1').show()
+//					$('.cooperation_btn1').hide()
 					$('#other_company').show()
 				}
 			})
@@ -650,14 +687,7 @@
 				})
 			}
 
-			if ("本公司" != project_company) {
-				$('select[name=status]').hide()
-				$('input[name=other_status]').show()
-				$('.cooperation_btn1').hide()
-				$('#other_company').show()
-			} else {
-				$('#other_company').hide()
-			}
+
 
 		});
 
@@ -796,11 +826,9 @@
 		RemoveTr();
 
 
-		var project_company = '{$project.company}';
-		if ('' == project_company) {
-			project_company = '本公司';
-		}
+
 		var $other_company = ',' + '{$project.other_company}' + ',';
+
 
 		function callOpponent(id) {
 			var url = '/service/customer/search/opponent';

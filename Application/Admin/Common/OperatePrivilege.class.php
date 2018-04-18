@@ -15,6 +15,10 @@ class OperatePrivilege
         'Project/manage',
         'Project/search',
     ];
+	const ACTION_LIST = [
+		'addLiaison',
+		'liaison',
+	];
 
     public function before() {
         Log::write(CONTROLLER_NAME);
@@ -22,6 +26,10 @@ class OperatePrivilege
         if(IS_GET || !in_array(CONTROLLER_NAME, self::URL_LIST)) {
             return;
         }
+         if(in_array(ACTION_NAME, self::ACTION_LIST)) {
+            return;
+        }
+        
         // 需要判断的参数
         if(!empty(I('post.customer_id')) 
             && 'boss' != session('employee.role_type_code')) {

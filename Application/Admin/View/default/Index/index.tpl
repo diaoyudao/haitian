@@ -130,19 +130,21 @@
 
     .head-search input {
         position: relative;
-        left: 50px;
+        /*left: 50px;*/
+        left: 30px;
         width: 180px;
         height: 26px;
         border: 1px solid #ccc;
         border-radius: 15px;
         background-color: #fff;
         padding-left: 10px;
-        display: none;
+        /*display: none;*/
     }
 
     .head-search-i {
         position: relative;
-        left: -25px;
+        /*left: -25px;*/
+        left: 0px;
         color: #999;
     }
 
@@ -238,7 +240,7 @@
 </style>
 <header class="navbar-wrapper" style="height:60px;overflow: hidden;color:#fff;">
     <div class="navbar navbar-fixed-top">
-        <div class="container-fluid cl" style="height:60px;overflow: hidden;line-height: 60px;">
+        <div class="container-fluid cl" style="height:60px;overflow: hidden;line-height: 60px;background:#D70A30;">
             <a class="logo navbar-logo f-l mr-10 hidden-xs" href="">
                 <img src="/public/img/admin/logo.png" style="height:40px;margin-top: 10px;"/>
             </a>
@@ -469,9 +471,9 @@
 		})
 		$('#i-search').mouseenter(function () {
 			if ($('#head-input').is(':hidden')) {
-				$('#head-input').val('');
+				//$('#head-input').val('');
 				$('#head-input').show();
-				$('#head-input').animate({left:'0'}, 150)
+				//$('#head-input').animate({left:'0'}, 150)
 			}
 		})
 		$('#i-search').click(function () {
@@ -482,8 +484,8 @@
 		})
 		$('.head-search').mouseleave(function () {
 			if (!$('#head-input').is(':hidden')) {
-				$('#head-input').hide();
-				$('#head-input').animate({left:'50px'}, 10)
+				//$('#head-input').hide();
+				//$('#head-input').animate({left:'50px'}, 10)
 			}
 		})
 

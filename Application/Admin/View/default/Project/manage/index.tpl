@@ -4,6 +4,8 @@
     <link rel="stylesheet" type="text/css" href="/public/bootstrap-select/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="/public/huiadmin/static/h-ui/css/H-ui.min.css"/>
     <link rel="stylesheet" type="text/css" href="/public/css/project/index.css"/>
+    <link href="/public/js/lib/jquery.searchableSelect.css" rel="stylesheet" type="text/css" />
+
 </block>
 <block name="common_js">
 
@@ -15,12 +17,21 @@
 
 <block name="body_main">
     <style>
-
+        .searchable-select-dropdown{z-index:9}
+        .searchable-select{min-width:100px}
+        .input_text{height: 32px;width: 100px;border: 1px solid #e0e0e0;padding: 0 10px;}
     </style>
     <div class="body">
         <div class="right_box">
             <div class="right_box_content">
                 <div class="screen_box">
+                    <select class="screen_department" placeholder="省" name="province_id">
+                        <option value="">省</option>
+                        <volist name="province" id="item">
+                            <option value="{$item.province_id}">{$item.province_name}</option>
+                        </volist>
+                    </select>
+                    <!--
                     <if condition="'boss' eq session('employee.role_type_code')">
                         <select class="screen_department" name="department_id">
                             <option value="">全部部门</option>
@@ -28,7 +39,10 @@
                                 <option value="{$item.department_id}">{$item.name}</option>
                             </volist>
                         </select>
-                    </if>
+                    </if>-->
+                    <input class="input_text item-w" name="name" placeholder="业务员" type="text">
+                    <input type="text" class="input-text ml-10" style="width:70px"
+                           name="pg_size" placeholder="显示条数"/>
                     <select class="screen_department" placeholder="申请时间先后" name="order">
                         <option value="1">申请时间先后</option>
                         <option value="2">项目级别高低</option>
@@ -52,13 +66,15 @@
                             <thead>
                             <tr>
                                 <th>序号</th>
-                                <th>客户</th>
+                                <th width="80">客户</th>
                                 <th>地区</th>
                                 <th>类型</th>
                                 <th>项目名称</th>
                                 <th>状态</th>
+                                <th>业务员</th>
                                 <th>项目日期</th>
                                 <th>规模（万）</th>
+                                <th>流程日期</th>
                                 <th>操作</th>
                                 <th>关联客户</th>
                             </tr>
@@ -108,8 +124,13 @@
 <block name="footer_js">
     <script type="text/javascript" src="/public/huiadmin/static/h-ui.admin/js/H-ui.admin.js"></script>
     <script type="text/javascript" src="/public/js/lib/common-1.js"></script>
+    <script type="text/javascript" src="/public/js/lib/jquery.searchableSelect.js"></script>
+
+
     <script>
 		$(function () {
+			$('select[name=province_id]').searchableSelect();
+
 			$(".nav-tabs li").click(function () {
 				$(".nav-tabs li").removeClass("active");
 				$(this).addClass("active");
@@ -225,10 +246,11 @@
 			var url = '/service/project/search/list'
 			var param = {}
 				param.pg = $cur_pg
+				param.pg_size = $('input[name=pg_size]').val()
 			param.type = $type
 			param.order = $('select[name=order]').val()
-			param.status = $('select[name=status]').val()
-			param.department_id = $('select[name=department_id]').val()
+			param.name = $('input[name=name]').val()
+			param.province_id = $('select[name=province_id]').val()
 
 			K.doAjax(param, url, function (response) {
 				if (response.status && 'success' == response.status) {
@@ -262,8 +284,14 @@
 				str += '</td><td>' + (4 == v.type ? v.address : v.province_name) + (v.city_name ? v.city_name : '') + '</td>';
 				str += '<td>' + (1 == v.type ? "政府单位" : (2 == v.type ? "旅游景区" : (3 == v.type ? "国有企业" : (4 == v.type ? "海外客户" : (5 == v.type ? "民营企业" : "其他"))))) + '</td>';
 				str += '<td>' + v.project_name + '</td><td>' + v.status_name + '</td>';
+				var employee_name="";
+				$.each(v.employee.employee_name, function (i_d, v_d) {
+					employee_name +=v_d+' ';
+				})
+				str += '<td>' + employee_name + '</td>';
 				str += '<td>' + (v.begin_date ? v.begin_date : '') + '</td><td>' + v.scale_fee + '</td>';
-				str += '<td><button type="button" class="btn btn-default" onclick="LsgLayerShow(\'查看项目详情\',\'/service/customer/search/addproject?r=1&project_id=' + v.project_id + '\', 800, 520,100)">项目详情</button><a href="/service/customer/search/detail?one=1&customer_id=' + v.customer_id + '"><button type="button" class="btn btn-default">客户详情</button></a>';
+				str += '<td> 提交时间：' + (v.start ? v.start : '') + '<br>返回时间：'+(v.return ? v.return : '')+ '<br>结案时间：'+(v.end ? v.end : '')+'</td>';
+				str += '<td><button type="button" class="btn btn-default" onclick="LsgLayerShow(\'查看项目详情\',\'/service/customer/search/addproject?r=1&project_id=' + v.project_id + '\', 800, 520,100)">项目详情</button><a  target="_blank" href="/service/customer/search/detail?one=1&customer_id=' + v.customer_id + '"><button type="button" class="btn btn-default">客户详情</button></a>';
 				if ('salesman' == '{$Think.session.employee.role_type_code}')
 					str += '<button type="button" class="btn btn-default" onclick="LsgLayerShow(\'联络记录\',\'/service/customer/search/addliaison?id=' + v.customer_id + '\', 800, 460,50)">新建联络</button>';
 				str += '</td>';
@@ -271,7 +299,7 @@
 				if (v.other_cust) {
 					str += '<td>';
 					$.each(v.other_cust, function (i_c, v_c) {
-						str += '<a href="/service/customer/search/detail?one=1&customer_id=' + v_c.customer_id + '">' + v_c.name + '</a>' + '<br>';
+						str += '<a  target="_blank" href="/service/customer/search/detail?one=1&customer_id=' + v_c.customer_id + '">' + v_c.name + '</a>' + '<br>';
 					})
 					str += '</td>';
 				} else {

@@ -125,7 +125,7 @@ class SituationController extends Controller
 			// 不处理
 			$this->ajaxReturn(['status' => 'success']);
 		}
-		if (0 != $data['approve']) {
+		if (0 != $old_proj['approve']) {
 			$this->ajaxReturn(['status' => 'failed', 'message' => '该项目正在走流程不能修改']);
 		}
 		
@@ -137,18 +137,20 @@ class SituationController extends Controller
 			if ('H' == $data['level']) {
 				// 只是修改一下项目等级。
 			} else if ('Z' == $old_proj['level'] && 'Z' != $this->param['level']
-				&& (1 == $old_proj['status'] || 2 == $old_proj['status'])) {
+//				&& (1 == $old_proj['status'] || 2 == $old_proj['status'])) {
+			) {
 				$data['status'] = 5;
 				$data['son_status'] = 51;
 				
 				$this->changeCust($old_proj);
-			} else if ('Z' != $old_proj['level'] && 'Z' == $this->param['level']
-				&& (5 == $old_proj['status'])) {
-				$data['status'] = 2;
-				$data['son_status'] = 21;
-				
-				$this->changeCust($old_proj);
 			}
+//			else if ('Z' != $old_proj['level'] && 'Z' == $this->param['level']
+//				&& (5 == $old_proj['status'])) {
+//				$data['status'] = 2;
+//				$data['son_status'] = 21;
+//
+//				$this->changeCust($old_proj);
+//			}
 			
 			$ret = $this->base_model
 				->where(['project_id' => $this->param['project_id']])
@@ -392,7 +394,9 @@ class SituationController extends Controller
 			$data['business_id'] = null;
 			$data['last_business_id'] = $old_cust['business_id'];
 		} else {
-			$data['business_id'] = session('employee.department_id');
+			if(session('employee.role_type_code') != 'boss'){
+				$data['business_id'] = session('employee.department_id');
+			}
 			$data['last_business_id'] = $old_cust['business_id'];
 		}
 		
@@ -445,7 +449,7 @@ class SituationController extends Controller
 			$this->where['aa.proj_type'] = $this->param['proj_type'];
 		}
 		if (!empty($this->param['name'])) {
-			$this->where['aa.name'] = ['like', '%' . $this->param['name'] . '%'];
+			$this->where['bb.name'] = ['like', '%' . $this->param['name'] . '%'];
 		}
 		
 		

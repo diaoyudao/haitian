@@ -7,6 +7,8 @@ use Admin\Common\Model\OcModel;
 use Admin\Common\Parameter\Validator;
 
 use Admin\Model\Operate;
+use Admin\Controller\Customer;
+
 /**
  * 项目管理类
  */
@@ -27,8 +29,12 @@ class ManageController extends Controller
             $where['_string'] = 'delete_time is null';
             $where['department_type_id'] = ['in', ['business','information']];
             $department = M('department')->where($where)->select();
-
+			
+            $customer=new Customer\ManageController();
+           	$customer->getProvince();
+//            dump($province_id);
             $this->assign('department', $department);
+           
             $this->display();
             return;
         }
@@ -396,7 +402,7 @@ class ManageController extends Controller
         //
         $data['customer_id'] = $customer_id;
         $data['department_id'] = $in_department_id;
-        $data['update_time'] = date('Y-m-d H:i:s');
+//        $data['update_time'] = date('Y-m-d H:i:s');
         $data['_string'] = 'delete_time is null';
 
         foreach ($this->param['employee'] as $value) {

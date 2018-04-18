@@ -103,7 +103,7 @@
                     </select>
                 </span>
                 <input type="text" class="input-text ml-10" style="width:80px"
-                       name="name" placeholder="项目名称"
+                       name="name" placeholder="客户名称"
                        value="{$Think.get.name}"/>
                 <input type="text" class="input-text ml-10" style="width:70px"
                        name="pg_size" placeholder="显示条数"
@@ -183,13 +183,13 @@
                         <td>
                             <php>echo str_replace(',','<br>',$item['company']);</php>
                         </td>
-                        <if condition="'director' == session('employee.role_type_code') &&  'business' ==session('employee.department_type_id')">
+                        <if condition="('director' == session('employee.role_type_code') &&  'business' ==session('employee.department_type_id')) || 'boss' == session('employee.role_type_code') && $item['son_status'] !=44 && $item['son_status'] !=46">
                             <td>
                                 <select name="set_level" onchange="changeLevel(this,'{$item.project_id}')"
                                         class="select" custid="{$item.customer_id}">
-                                    <volist name="Think.config.PROJECT_LEVEL_LIST" id="v">
+                                    <volist name="Think.config.PROJECT_LEVEL_LIST" id="v" >
                                         <option value="{$key}"
-                                        <if condition="$item['level'] eq $key"> selected</if>
+                                        <if condition="$item['level'] eq $key"> selected</if> <if condition="$i gt 3"> disabled</if>
                                         >{$v}</option>
                                     </volist>
                                 </select>
@@ -316,7 +316,8 @@
 			K.doAjax(param, url, function (res) {
 				if (res.status && res.status == 'success') {
 					//K.refreshParent();
-					window.location.reload();
+//					window.location.reload();
+
 				} else {
 					if (res.message) {
 						layer.msg(res.message, {icon: 2, time: 2000});

@@ -102,7 +102,7 @@ class ManageController extends Controller
 			
 			if ($cust) {
 				$where_c['_string'] = $this->whereEmployee();
-				$where_c['_string'] .= ' delete_time is null';
+				$where_c['_string'] = ' delete_time is null';
 				$where_c['customer_id'] = ['in', json_decode($cust)];
 				
 				$his = M('customer')->where($where_c)->alias('cu')->select();
@@ -381,15 +381,15 @@ class ManageController extends Controller
 		$ret = 'true ';
 		$where['_string'] = 'delete_time is null';
 		
-		if ('salesman' == session('employee.role_type_code')) {
+		if ('salesman' == session('employee.role_type_code') && 'information' == session('employee.department_type_id')) {
 			$where['_string'] .= ' and exists(select 1 from customer_employee ce where ce.customer_id=aa.customer_id and ce.delete_time is null  and ce.employee_id=' . session('employee_id') . ')';
 			$ret .= ' and exists(select 1 from customer_employee ce where ce.customer_id=cu.customer_id and ce.delete_time is null and ce.employee_id=' . session('employee_id') . ')';
 		} else if ('information' == session('employee.department_type_id')) {
 			$where['information_id'] = session('employee.department_id');
 			$ret .= "and information_id='" . session('employee.department_id') . "'";
 		} else if ('business' == session('employee.department_type_id')) {
-			$where['business_id'] = session('employee.department_id');
-			$ret .= "and business_id='" . session('employee.department_id') . "'";
+//			$where['business_id'] = session('employee.department_id');
+//			$ret .= "and business_id='" . session('employee.department_id') . "'";
 		}
 		$ret .= " and ";
 		// 获取类型列表和客户数
@@ -1183,7 +1183,7 @@ class ManageController extends Controller
 		
 		$this->ajaxReturn(['status' => 'success']);
 	}
-	
+
 //	private function getProvince($province_id = null)
 //	{
 //		$where['_string'] = 'delete_time is null';
@@ -1210,6 +1210,7 @@ class ManageController extends Controller
 			$city = M('city')->order('city_id')->where($where)->select();
 			$this->assign('city', $city);
 		}
+		
 	}
 	
 	private function getCounty($city_id)
@@ -1235,9 +1236,9 @@ class ManageController extends Controller
 	private function whereEmployee()
 	{
 		$ret = 'true ';
-		if ('salesman' == session('employee.role_type_code')) {
+		if ('salesman' == session('employee.role_type_code') && 'information' == session('employee.department_type_id')) {
 			$this->where['_string'] = ' exists(select 1 from customer_employee ce where ce.customer_id=cu.customer_id and ce.delete_time is null  and ce.employee_id=' . session('employee_id') . ')';
-			
+
 			$ret .= " and exists(select 1 from customer_employee ce where ce.customer_id=cu.customer_id and ce.delete_time is null  and ce.employee_id=" . session('employee_id') . ") ";
 		} else
 			// 信息部和业务部特殊处理
@@ -1245,8 +1246,8 @@ class ManageController extends Controller
 				$this->where['information_id'] = session('employee.department_id');
 				$ret .= "and information_id='" . session('employee.department_id') . "'";
 			} else if ('business' == session('employee.department_type_id')) {
-				$this->where['business_id'] = session('employee.department_id');
-				$ret .= "and business_id='" . session('employee.department_id') . "'";
+//				$this->where['business_id'] = session('employee.department_id');
+//				$ret .= "and business_id='" . session('employee.department_id') . "'";
 			}
 		
 		return $ret . " and ";

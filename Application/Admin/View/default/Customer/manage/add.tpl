@@ -1,6 +1,7 @@
 <extend name="./Application/Admin/View/default/base/context/common.tpl"/>
 <block name="common_css">
 	<link href="/public/css/customer/manage/add.css" rel="stylesheet" type="text/css" />
+	<link href="/public/js/lib/jquery.searchableSelect.css" rel="stylesheet" type="text/css" />
 </block>
 <block name="common_js">
 </block>
@@ -12,7 +13,8 @@
 <block name="body_main">
 	<style>
 		.w-item{width: 100px}
-
+		.searchable-select{min-width:100px;top:-2px;}
+		.searchable-select-holder {padding:4px;}
 	</style>
 	<div class="body">
 		<form action="" method="post" id="add-form-post">
@@ -22,7 +24,7 @@
 			</div>
 			<div class="ml-20" style="display: inline-block;">
 				<p class="title">客户分类</p>
-				<div class="content">
+				<div class="content" >
 					<select class="screen_department input_text w-item" name="type">
 						<option value="1">政府单位</option>
 						<option value="2">旅游景区</option>
@@ -54,7 +56,7 @@
 				</div>
 			</div>
 			<p class="title">所在地址</p>
-			<div class="content">
+			<div class="content" style="z-index: 9;overflow: inherit;">
 				<select class="screen_department" name="temp_s">
 					<option value="0">中国</option>
 				</select>
@@ -104,8 +106,11 @@
 </block>
 
 <block name="footer_js">
+	<script type="text/javascript" src="/public/js/lib/jquery.searchableSelect.js"></script>
+
 	<script type="text/javascript">
 		$(function() {
+			$('select[name=province_id]').searchableSelect();
 			$('select[name=type]').change(function() {
 				if('4' == $(this).val()) {
 					$('select[name=temp_s]').hide();
@@ -133,7 +138,23 @@
 						$.each(response.data, function(i,v){
 							city.append('<option value="' +v.city_id+ '">' +v.city_name+ '</option>');
 						})
-					}			
+					}
+				});
+			})
+			$('.searchable-select-item').click(function () {
+				$p_id = $(this).attr('data-value');
+				var parameter ={province_id: $p_id}
+				var url = '/service/customer/search/getcity';
+				K.doAjax(parameter, url, function (response) {
+					if ('success' == response.status) {
+						var city = $('select[name=city_id]');
+						city.empty()
+						$('select[name=county_id]').empty()
+						city.append('<option value="">省级客户</option>');
+						$.each(response.data, function (i, v) {
+							city.append('<option value="' + v.city_id + '">' + v.city_name + '</option>');
+						})
+					}
 				});
 			})
 

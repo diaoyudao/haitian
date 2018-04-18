@@ -64,7 +64,7 @@
                         <thead>
                         <tr>
                             <th width="60">日期</th>
-                            <th width="60">分类</th>
+                            <th width="120">分类</th>
                             <th width="120">客户</th>
                             <th width="120">联系人</th>
                             <th width="120">项目</th>
