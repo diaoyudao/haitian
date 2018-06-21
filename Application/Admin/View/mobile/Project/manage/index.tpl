@@ -143,6 +143,7 @@
 	<div class="body">
 		<!-- 升降查找 -->
 		<div class="order none">
+			<p onclick="changeOrder(0)">默认排序</p>
 			<p onclick="changeOrder(1)">时间先后</p>
 			<p onclick="changeOrder(2)">级别高低</p>
 			<p onclick="changeOrder(3)">规模多少</p>
@@ -282,7 +283,7 @@ var $type = 4 ; // 流程的选择项
 var $datas = null; // 查询的数据列表
 var $cur_pg = 1;  // cur页码
 var $totalPage = null;  // 总页码
-var $order = 1;
+var $order = 0;
 var $is_loading = false;
 
 function changeOrder(t) {

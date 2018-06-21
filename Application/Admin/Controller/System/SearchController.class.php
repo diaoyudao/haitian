@@ -49,7 +49,7 @@ class SearchController extends Controller
         $model = M('customer_contact');
 
         $this->where = [];
-        $this->where['_string'] = 'bb.delete_time is null';
+//        $this->where['_string'] .= ' bb.delete_time is null';
         if(!empty($this->param['name'])) {
             $where_or['bb.name'] = ['like', '%' . $this->param['name'] . '%'];
             $where_or['bb.phone'] = ['like', '%' . $this->param['name'] . '%'];
@@ -80,7 +80,6 @@ class SearchController extends Controller
     private function getCustomer() {
         $model = M('customer');
 
-        $this->where['_string'] = 'aa.delete_time is null';
 
         if(!empty($this->param['name'])) {
             $this->where['aa.name'] = ['like', '%' . $this->param['name'] . '%'];            
@@ -91,7 +90,8 @@ class SearchController extends Controller
             ->count();
         $this->page2 = new \Think\Page($counts, C('ONE_PAGE_SIZE'));
         $this->page2->show();
-
+		\Think\Log::write('==='.json_encode($this->where));
+		\Think\Log::write('=='.$model->_sql());
         // 1政府单位，2旅游景区，3国有企业，0其他，4海外客户，5民营企业
         $field = "if(1 = type,'政府单位',if(2=type,'旅游景区',if(3=type,'国有企业',if(4=type,'海外客户',if(5=type,'民营企业','其他'))))) type,customer_id,name";
         $this->result = $model->field($field)->alias('aa')
@@ -104,10 +104,12 @@ class SearchController extends Controller
     private function composeParamPosition() {
         // 总经理能选择部门，其他只能查看自己部门
         $this->where['_string'] = 'aa.delete_time is null';
-
-        if('business' == session('employee.department_type_id')) {
-            $this->where['aa.business_id'] = session('employee.department_id');
-        } else if('information' == session('employee.department_type_id')) {
+	
+		if ('salesman' == session('employee.role_type_code') && 'information' == session('employee.department_type_id')) {
+			$this->where['_string'] .= ' and  exists(select 1 from customer_employee ce where ce.customer_id=aa.customer_id and ce.delete_time is null  and ce.employee_id=' . session('employee_id') . ') ';
+//			var_dump(session('employee_id'));
+		}
+		if('information' == session('employee.department_type_id')) {
             $this->where['aa.information_id'] = session('employee.department_id');
         } else if('boss' == session('employee.department_type_id')) {
             

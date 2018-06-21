@@ -16,10 +16,21 @@
 
 <block name="body_main">
 	<style>
+		*{
+			-webkit-overflow-scrolling: touch;
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		body{
+			overflow: auto;
+		}
 		.body{
 			padding:0 10px;
 			padding-bottom: 20px;
-			overflow: hidden;
+			overflow-y: scroll;
+			/*overflow: auto;*/
 		}
 		/*清除浮动*/
 		.clearFix:after {
@@ -144,6 +155,10 @@
 <block name="footer_js">
 	
 	<script>
+
+//		var pg_height=$(".body").height();
+//		$(".body").css('height',pg_height+'px')
+//		console.log($(".body").height())
 		function checkDate(){
 			var text=$(".date").val()
 			$('.date_text').text(text);

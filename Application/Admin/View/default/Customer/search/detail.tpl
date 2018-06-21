@@ -76,7 +76,7 @@
 						<input type="text" id="cust-tag" placeholder="输入标签,回车添加" style="height: 37px;width: 100%;padding: 0 10px;border: 1px solid #e0e0e0;" onkeydown="callTags(event)"/>
 						<div class="icon_box" id="cust-tags-list">
 							<volist name="data.tags" id="item">
-								<p>{$item}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
+								<p onclick="removeTags(this,'{$item}')">{$item}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
 							</volist>							
 						</div>
 					</div>			
@@ -351,7 +351,7 @@ function callTags(e) {
 			var url = '/service/customer/manage/tags';
 			K.doAjax(parameter, url, function(response) {
 				if(response.status && 'success' == response.status) {
-					$('#cust-tags-list').append('<p>'+ str +'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>');
+					$('#cust-tags-list').append('<p onclick="removeTags(this,\''+str+'\')">'+ str +'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>');
 				} else {
 					console.log(4444);
 					//layer.msg('失败:'+response.message, {icon: 5, time: 2000});
@@ -359,6 +359,28 @@ function callTags(e) {
 			});
 		}
 	}
+}
+function removeTags(obj,str) {
+			var parameter={
+				customer_id: customer_id,
+				tags: str
+			}
+			var url = '/service/customer/manage/removetags';
+			K.doAjax(parameter, url, function(response) {
+				if(response.status && 'success' == response.status) {
+					$('#cust-tags-list').empty()
+					var str='';
+					$.each(response.tags, function(i,v){
+						str +='<p onclick="removeTags(this,\''+v+'\')">'+ v +'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>';
+					});
+					$('#cust-tags-list').append(str);
+				} else {
+					console.log(4444);
+					//layer.msg('失败:'+response.message, {icon: 5, time: 2000});
+				}
+			});
+
+
 }
 
 var $is_loading=false;
@@ -474,7 +496,7 @@ function showProjectList(res) { // 项目名称、展出时间、展出规模、
 		str += '<td>'+ v.scale_fee +'</td>';
 		str += '<td>'+ (v.fee_type?v.fee_type:'') +'</td>';
 		str += '<td ><span>'+ (v.context?v.context:'') +'</span></td>';
-		str += '<td>'+ (v.company?('本公司'!= v.company?(v.other_company):oper_show(v.company,v.common_company)):'') +'</td>';
+		str += '<td>'+ (v.company?('本公司'!= v.company?(v.other_company?v.other_company:v.company):oper_show(v.company,v.common_company)):'') +'</td>';
 		str += '<td>'+ (v.level?('Z' == v.level?'普通':(v.level+'级')):'') +'</td>';		
 		str += '<td>'+ v.status_name +'</td>';		
 

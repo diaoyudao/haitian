@@ -384,8 +384,8 @@
 	}
 
 	.records_table tbody tr td:nth-child(5) img{
-		width: 14px;
-		height: 14px;
+		width: 18px;
+		height: 18px;
 	}
 
 	.records_table tbody tr td p img{

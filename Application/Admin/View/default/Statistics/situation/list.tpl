@@ -52,6 +52,16 @@
                     </select>
                 </span>
                 <span class="select-box ml-10" style="width:100px;">
+                    <select class="select" name="city_id">
+					    <option value="">市</option>
+				    </select>
+                </span>
+                <span class="select-box ml-10" style="width:100px;">
+                    <select class="select" name="county_id">
+                        <option value="">区/县</option>
+                    </select>
+                </span>
+                <span class="select-box ml-10" style="width:100px;">
                     <select name="light_proj" class="select">
                         <option value="">落实完成</option>
                         <option value="1" <if condition="I('get.light_proj') eq 1"> selected</if>>是</option>
@@ -66,6 +76,18 @@
                                     condition="I('get.proj_type') eq $v['model_config_id']"> selected</if>>
                             {$v.name}</option>
                         </volist>
+                    </select>
+                </span>
+                <input type="text" onfocus="WdatePicker({dateFmt:'yyyy'})"
+                       class="input-text ml-10" style="width:80px"
+                       name="year" placeholder="展出年份"
+                       value="{$Think.get.year}"
+                       class="input-text Wdate"/>
+                <span class="select-box ml-10" style="width:120px;">
+                    <select name="time_type" class="select">
+                       <option value="">筛选时段</option>
+                      <option value="1" <if condition="I('get.time_type') eq 1"> selected</if>>春节</option>
+                        <option value="0" <if condition="I('get.time_type') == '0'"> selected</if>>普通</option>
                     </select>
                 </span>
                 <span class="select-box ml-10" style="width:100px;">
@@ -140,14 +162,18 @@
                 <tbody>
                 <volist name="data" id="item">
                     <tr class="text-l">
-                        <td><a target="_blank" href="/service/customer/search/detail?customer_id={$item.customer_id}">{$item.customer_name}</a></td>
+                        <td><a target="_blank"
+                               href="/service/customer/search/detail?customer_id={$item.customer_id}">{$item.customer_name}</a>
+                        </td>
                         <td>{$item.project_name}</td>
                         <td>
                             <php>echo (1==$item['light_proj']?'是':'否');</php>
                         </td>
                         <td>{$item.proj_type}</td>
                         <td>{$item.begin_date} ~ {$item.end_date}</td>
-                        <td><gt name="item.scale_fee" value="0">{$item.scale_fee}</gt></td>
+                        <td>
+                            <gt name="item.scale_fee" value="0">{$item.scale_fee}</gt>
+                        </td>
                         <td>{$item.fee_type}</td>
                         <td>{$item.is_ticket}</td>
                         <td>
@@ -173,7 +199,8 @@
                                             class="c-666">灯会期间门票：</strong>{$item.run_ticket|default=''}</li>
                                 <li class="more-line"><strong
                                             class="c-666">灯会期间客流：</strong>{$item.run_passenger|default=''}</li>
-                                <li class="more-line"><strong class="c-666">收益情况：</strong><gt name="item.out_value" value="0">{$item.out_value|default=''}</gt>
+                                <li class="more-line"><strong class="c-666">收益情况：</strong>
+                                    <gt name="item.out_value" value="0">{$item.out_value|default=''}</gt>
                                 </li>
                                 <li class="more-line"><strong class="c-666">运营方案：</strong>{$item.programme|default=''}
                                 </li>
@@ -187,9 +214,10 @@
                             <td>
                                 <select name="set_level" onchange="changeLevel(this,'{$item.project_id}')"
                                         class="select" custid="{$item.customer_id}">
-                                    <volist name="Think.config.PROJECT_LEVEL_LIST" id="v" >
+                                    <volist name="Think.config.PROJECT_LEVEL_LIST" id="v">
                                         <option value="{$key}"
-                                        <if condition="$item['level'] eq $key"> selected</if> <if condition="$i gt 3"> disabled</if>
+                                        <if condition="$item['level'] eq $key"> selected</if>
+                                        <if condition="$i gt 3"> disabled</if>
                                         >{$v}</option>
                                     </volist>
                                 </select>
@@ -242,21 +270,92 @@
 <block name="footer_js">
     <script type="text/javascript">
 		/*  分页 */
+		var $province_id = '{$Think.get.province_id}'
+		var $city_id = '{$Think.get.city_id}'
+		var $county_id = '{$Think.get.county_id}'
+		$(function () {
+
+			if ($province_id != '') {
+				citylist($province_id);
+			}
+//			console.log($city_id)
+			if ($city_id != '') {
+				countylist($city_id);
+			}
+		});
+		$('select[name=province_id]').change(function () {
+			var $p_id = $(this).val();
+			citylist($p_id);
+
+		})
+
+		$('select[name=city_id]').change(function () {
+			var $p_id = $(this).val();
+			countylist($p_id)
+		})
 		var department_id = $("select[name=department_id]").val();
 		var province_id = $("select[name=province_id]").val();
+		var city_id = $("select[name=city_id]").val();
+		city_id = city_id ? city_id : $city_id;
+		var county_id = $("select[name=county_id]").val();
+		county_id = county_id ? county_id : $county_id;
 		var is_ticket = $("select[name=is_ticket]").val();
 		var company = $("select[name=company]").val();
 		var level = $("select[name=level]").val();
+		var year = $("input[name=year]").val();
 		var begin_time = $("input[name=begin_time]").val();
 		var end_time = $("input[name=end_time]").val();
 		var light_proj = $("select[name=light_proj]").val();
 		var proj_type = $("select[name=proj_type]").val();
+		var time_type = $("select[name=time_type]").val();
 		var name = $("input[name=name]").val();
 		var pg_size = $("input[name=pg_size]").val();
-		var param = '&proj_type=' + proj_type + '&name=' + name + '&light_proj=' + light_proj + '&department_id=' + department_id + '&province_id=' + province_id + '&is_ticket=' + is_ticket + '&company=' + company + '&level=' + level + '&begin_time=' + begin_time + '&end_time=' + end_time + '&pg_size=' + pg_size;
+		var param = '&proj_type=' + proj_type + '&name=' + name + '&light_proj=' + light_proj + '&year=' + year+ + '&time_type=' + time_type+'&department_id=' + department_id + '&province_id=' + province_id + '&city_id=' + city_id + '&county_id=' + county_id + '&is_ticket=' + is_ticket + '&company=' + company + '&level=' + level + '&begin_time=' + begin_time + '&end_time=' + end_time + '&pg_size=' + pg_size;
 		var page_size = '<php> echo empty($pager->totalPages) ? 1 : $pager->totalPages;</php>';
 		if (page_size > 1) {
 			PAGER.create(page_size, param);
+		}
+
+
+		function citylist(id) {
+			var parameter ={province_id: id}
+			var url = '/service/customer/search/getcity';
+			K.doAjax(parameter, url, function (response) {
+				if ('success' == response.status) {
+					var city = $('select[name=city_id]');
+					city.empty()
+					$('select[name=county_id]').empty()
+					city.append('<option value="">省级客户</option>');
+					$.each(response.data, function (i, v) {
+						if (v.city_id == $city_id && $city_id != '') {
+							city.append('<option  value="' + v.city_id + '" selected >' + v.city_name + '</option>');
+						} else {
+							city.append('<option value="' + v.city_id + '">' + v.city_name + '</option>');
+						}
+					})
+				}
+			});
+		}
+
+
+		function countylist(id) {
+//			console.log(id)
+			var parameter ={city_id: id}
+			var url = '/service/customer/search/getcounty';
+			K.doAjax(parameter, url, function (response) {
+				if ('success' == response.status) {
+					var county = $('select[name=county_id]');
+					county.empty()
+					county.append('<option value="">市级客户</option>');
+					$.each(response.data, function (i, v) {
+						if (v.county_id == $county_id && $county_id != '') {
+							county.append('<option  value="' + v.county_id + '" selected >' + v.county_name + '</option>');
+						} else {
+							county.append('<option value="' + v.county_id + '">' + v.county_name + '</option>');
+						}
+					})
+				}
+			});
 		}
 
 		function delProj(proj_id) {
@@ -345,7 +444,7 @@
 			});
 		}
 
-//		var $list = JSON.parse('<php>echo json_encode($data);</php>');
+		//		var $list = JSON.parse('<php>echo json_encode($data);</php>');
 
 		function showAddr(id) {
 			cur = {};

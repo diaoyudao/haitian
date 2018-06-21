@@ -95,7 +95,7 @@ class SituationController extends Controller
 		
 		$field = "aa.light_proj,bb.name customer_name,aa.name project_name,bb.business_id, scale_fee,aa.customer_id,aa.project_id,aa.son_status,"
 			. "aa.begin_date,aa.end_date,(select name from config_auto where config_auto_id=aa.fee_type) fee_type,bb.business_id,(select name from model_config where model_config_id=aa.proj_type) proj_type,"
-			. "context,if('本公司'=company,concat(company,',',common_company),other_company) company,"
+			. "context,if('本公司'!=company,if('' !=other_company,other_company,company),concat(company,',',common_company)) company,"
 			. "aa.level,aa.address,if('1'=is_ticket,'是',if('0'=is_ticket,'否','')) is_ticket,traffic,peace_passenger,relation,ability,ticket,run_ticket,run_passenger,out_value,programme,report";
 		
 		$this->result = $this->base_model->where($this->where)
@@ -386,19 +386,19 @@ class SituationController extends Controller
 		$model = new OcModel('customer');
 		$old_cust = $model->find($old_proj['customer_id']);
 		// 转信息中心
-		if (5 == $old_proj['status']) {
-			if (empty($old_cust['information_id'])) {
-				return;  // 业务部创建的客户,不转信息中心了
-			}
-			
-			$data['business_id'] = null;
-			$data['last_business_id'] = $old_cust['business_id'];
-		} else {
+//		if (5 == $old_proj['status']) {
+//			if (empty($old_cust['information_id'])) {
+//				return;  // 业务部创建的客户,不转信息中心了
+//			}
+//
+//			$data['business_id'] = null;
+//			$data['last_business_id'] = $old_cust['business_id'];
+//		} else {
 			if(session('employee.role_type_code') != 'boss'){
 				$data['business_id'] = session('employee.department_id');
 			}
 			$data['last_business_id'] = $old_cust['business_id'];
-		}
+//		}
 		
 		$ret = $model->where(['customer_id' => $old_proj['customer_id']])
 			->save($data);
@@ -419,9 +419,23 @@ class SituationController extends Controller
 		if (!empty($this->param['province_id'])) {
 			$this->where['bb.province_id'] = $this->param['province_id'];
 		}
+		if (!empty($this->param['city_id'])) {
+			$this->where['bb.city_id'] = $this->param['city_id'];
+		}
+		if (!empty($this->param['county_id'])) {
+			$this->where['bb.county_id'] = $this->param['county_id'];
+		}
+		if (!empty($this->param['year'])) {
+			$this->where['aa.year'] = $this->param['year'];
+		}
+		
 		if (!empty($this->param['is_ticket']) || '0' === $this->param['is_ticket'] ?? null) {
 			$this->where['ar.is_ticket'] = $this->param['is_ticket'];
 		}
+		if (!empty($this->param['time_type']) || '0' === $this->param['time_type'] ?? null) {
+			$this->where['aa.time_type'] = $this->param['time_type'];
+		}
+		
 		if (!empty($this->param['begin_time']) && empty($this->param['end_time'])) {
 			$this->where['aa.begin_date'] = ['egt', $this->param['begin_time']];
 		}
@@ -476,6 +490,16 @@ class SituationController extends Controller
 						'required' => false,
 						'allow_empty' => true
 					],
+					'city_id' => [
+						'type' => 'integer',
+						'required' => false,
+						'allow_empty' => true
+					],
+					'county_id' => [
+						'type' => 'integer',
+						'required' => false,
+						'allow_empty' => true
+					],
 					'is_ticket' => [
 						'enum_eq' => [0, 1],
 						'required' => false,
@@ -496,6 +520,11 @@ class SituationController extends Controller
 						'required' => false,
 						'allow_empty' => true
 					],
+					'year' => [
+						'type' => 'Y',
+						'required' => false,
+						'allow_empty' => true
+					],
 					'end_time' => [
 						'type' => 'date',
 						'required' => false,
@@ -511,6 +540,12 @@ class SituationController extends Controller
 						'required' => false,
 						'allow_empty' => true
 					],
+					'time_type' => [
+						'type' => 'string',
+						'required' => false,
+						'allow_empty' => true
+					],
+					
 				]);
 			} else if ('changeAbc' == $type) {
 				(new Validator())->execute(I(''), [

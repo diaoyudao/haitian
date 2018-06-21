@@ -44,8 +44,9 @@
                     <input type="text" class="input-text ml-10" style="width:70px"
                            name="pg_size" placeholder="显示条数"/>
                     <select class="screen_department" placeholder="申请时间先后" name="order">
-                        <option value="1">申请时间先后</option>
-                        <option value="2">项目级别高低</option>
+                        <option value="0">默认排序</option>
+                        <option value="1">项目创建时间先后</option>
+                        <option value="2">项目等级</option>
                         <option value="3">项目规模多少</option>
                         <option value="4">项目日期近远</option>
                     </select>

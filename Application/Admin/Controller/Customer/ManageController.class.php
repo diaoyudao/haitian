@@ -1011,6 +1011,32 @@ class ManageController extends Controller
 		
 		$this->ajaxReturn(['status' => 'success']);
 	}
+	public function removeTags()
+	{
+		$this->checkParameter('tags');
+		$where['customer_id'] = $this->param['customer_id'];
+		$tags = $this->base_model->where($where)->getField('tags');
+		
+		if ($tags) {
+			$arr = json_decode($tags);
+			foreach ($arr as $k=>$v){
+				if($this->param['tags'] == $v){
+					array_splice($arr,$k,1);
+				}
+			}
+			$this->param['tags'] = json_encode($arr);
+		}
+		
+		$ret = $this->base_model->save($this->param);
+		if (false === $ret) {
+			Log::write('删除客户的标签失败：' . $this->base_model->getDbError());
+			
+			$this->ajaxReturn(['status' => 'failed', 'message' => '后台失败']);
+		}
+		
+		$this->ajaxReturn(['status' => 'success','tags'=>$arr]);
+	}
+	
 	
 	// 添加客户事件
 	public function addEvent()

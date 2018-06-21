@@ -86,16 +86,20 @@ class SearchController extends Controller
 			->count();
 		$page = new \Think\Page($counts, I('post.pg_size', C('ONE_PAGE_SIZE'), FILTER_VALIDATE_INT));
 		$page->show();
-		
 		$field = "aa.company,aa.other_cust,aa.project_id,aa.customer_id,aa.company,bb.name customer_name,bb.type,(select province_name from province where province_id=bb.province_id) province_name,aa.level,bb.is_vip,"
 			. "(select city_name from city where city_id=bb.city_id) city_name,aa.name project_name,aa.status,aa.son_status,bb.address,"
-			. "aa.begin_date,aa.end_date,aa.scale_fee";
+//			."(SELECT max(pa.create_time) from project_approve  pa WHERE pa.project_id=aa.project_id and approve=1 and status=1 and pa.delete_time is null)  start,"
+//			."(SELECT max(pa.create_time) from project_approve  pa WHERE pa.project_id=aa.project_id and approve=2 and status=1 and pa.delete_time is null)  return,"
+//			."(SELECT max(pa.create_time) from project_approve  pa WHERE pa.project_id=aa.project_id and approve=3 and status=1 and pa.delete_time is null)  end,"
+			. " aa.begin_date,aa.end_date,aa.scale_fee";
 		$result = $this->base_model->alias('aa')->where($this->where)
-			->order($this->order)->field($field)
+//			->order($this->order)
+			->field($field)
 			->page(I('post.pg', 1, FILTER_VALIDATE_INT),I('post.pg_size', C('ONE_PAGE_SIZE'), FILTER_VALIDATE_INT))
 			->join('customer bb on aa.customer_id=bb.customer_id and bb.delete_time is null')
-			->order('aa.level,bb.province_id,bb.city_id,aa.project_id')
+			->order($this->order)
 			->select();
+		Log::write(json_encode(M()->_sql()));
 		// 获取业务员数据
 		if ($result) {
 			$where_employee['customer_id'] = ['in', array_column($result, 'customer_id')];
@@ -157,7 +161,7 @@ class SearchController extends Controller
 			$this->where['_complex'] = $where_tt;
 		}
 		
-		$this->where['aa.company'] = '本公司';
+//		$this->where['aa.company'] = '本公司';
 		
 		if (!empty($this->param['status'])) {
 			$this->where['aa.approve_status'] = $this->param['status'];
@@ -204,17 +208,16 @@ class SearchController extends Controller
 			$this->where['aa.status'] = ['in', [1, 2]];
 			$this->where['aa.is_return'] = 1;
 		}
-		
 		if (1 == $this->param['order']) {
-			$this->order = 'aa.create_time desc';
+			$this->order = 'aa.create_time';
 		} else if (2 == $this->param['order']) {
 			$this->order = 'aa.level';
 		} else if (3 == $this->param['order']) {
 			$this->order = 'aa.scale_fee desc';
 		} else if (4 == $this->param['order']) {
-			$this->order = 'aa.begin_date desc';
-		} else {
-			$this->order = 'aa.begin_date desc';
+			$this->order = "aa.begin_date is null,aa.begin_date";
+		}else{
+			$this->order = 'bb.province_id,bb.city_id,aa.project_id';
 		}
 	}
 	
@@ -250,7 +253,7 @@ class SearchController extends Controller
 				]);
 			} else if ('list' == $type) {
 				(new Validator())->execute(I(''), [
-					'order' => ['enum_eq' => [1, 2, 3, 4]],  // 排序
+					'order' => ['enum_eq' => [0,1, 2, 3, 4]],  // 排序
 					'status' => [  // 状态
 						'enum_eq' => [1, 2, 3, 4, 5],
 						'required' => false, 'allow_empty' => true

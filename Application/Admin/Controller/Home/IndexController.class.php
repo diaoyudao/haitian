@@ -70,6 +70,7 @@ class IndexController extends Controller
 				$where['week'] = 52;
 				$where['create_time'] = [['lt', $year], ['gt', $pre_year]];
 			}
+			$where['employee_id']=session('employee_id');
 			$where['_string'] = 'delete_time is null';
 			$model = M('work_plan');
 			

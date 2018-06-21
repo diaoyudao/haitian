@@ -350,9 +350,9 @@ class SearchController extends Controller
 		$where_emp['department_id'] = session('employee.department_id');
 		
 		$employee_arr = M('employee')->where($where_emp)->getField('employee_id', true);
-		if(session('employee.department_type_id') == 'information'){
-			$where['aa.employee_id'] = ['in', $employee_arr];
-		}
+//		if(session('employee.department_type_id') == 'information'){
+//			$where['aa.employee_id'] = ['in', $employee_arr];
+//		}
 		$model = M('customer_liaison');
 		
 		$counts = $model->where($where)->alias('aa')
