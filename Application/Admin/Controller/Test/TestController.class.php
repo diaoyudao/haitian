@@ -98,8 +98,8 @@ class TestController extends Controller
 //			'1039' => ['130000', '310000', '340000', '220000', '410000', '320000', '540000', '460000']
 //		];
 //		$arr = ['1048' => ['330000', '530000', '500000','630000'],
-		$arr = ['1048' => ['630000'],
-		
+		$arr = ['1048' => ['210000','460000'],
+			'1053' => ['440000','350000','450000','430000','410000']
 		];
 		
 		$arr_new = $this->ergodic($arr);
@@ -117,6 +117,7 @@ class TestController extends Controller
 			foreach ($arr as $k => $v) {
 				$customer_where['province_id'] = ['in', $v];
 				$customer_where['_string'] = 'delete_time is null';
+				$customer_where['information_id'] = 100017;
 				$customer_ids = M('customer')->where($customer_where)->getField('customer_id', true);
 				foreach ($customer_ids as $item) {
 					
